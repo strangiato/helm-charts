@@ -1,0 +1,43 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "rgw-bucket-helper.fullname" . }}-{{ .Release.Revision }}
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": post-install
+    "helm.sh/hook-weight": "-5"
+    "helm.sh/hook-delete-policy": hook-succeeded
+  labels:
+    {{- include "rgw-bucket-helper.labels" . | nindent 4 }}
+spec:
+  selector: {}
+  template:
+    metadata:
+      name: {{ include "rgw-bucket-helper.fullname" . }}
+    spec:
+      containers:
+        - name: bucket-helper
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          env:
+            - name: AWS_ACCESS_KEY_ID
+              {{- toYaml .Values.s3.accessKeyID | nindent 14 }}
+            - name: AWS_SECRET_ACCESS_KEY
+              {{- toYaml .Values.s3.secretAccessKey | nindent 14 }}
+            - name: APP_S3_ENDPOINT_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.bucket.name }}
+                  key: BUCKET_HOST
+            - name: APP_S3_BUCKET_NAME
+              valueFrom:
+                configMapKeyRef:
+                  key: BUCKET_NAME
+                  name: {{ .Values.bucket.name }}
+            - name: APP_S3_BUCKET_PUBLIC
+              value: {{ .Values.bucket.publicPolicy }}
+            - name: APP_S3_BUCKET_TOPIC_NAME
+              value: {{ .Values.bucket.name }}
+            - name: APP_S3_BUCKET_TOPIC_PUSH_ENDPOINT
+              value: {{ .Values.kafka.bootstrapServer }}
+      restartPolicy: Never
