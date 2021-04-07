@@ -1,0 +1,38 @@
+apiVersion: v1
+entries:
+  odh:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2021-04-07T23:20:18.912047338Z"
+    description: A Helm chart for configuring an OpenDataHub instance
+    digest: ec4113cb3441ffe73effcf61543401e6d1f511803a18691baf9bc8968ac15bf8
+    name: odh
+    type: application
+    urls:
+    - https://strangiato.github.io/helm-charts/odh-0.1.0.tgz
+    version: 0.1.0
+  rgw-bucket-helper:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2021-04-07T23:20:18.912482755Z"
+    description: A Helm chart for configuring buckets using OpenShift Container Storage
+      RGW
+    digest: 97c5f2c44b7f347b630af5163dec53997e2dc1b6990affa1f97820f161c43dd9
+    name: rgw-bucket-helper
+    type: application
+    urls:
+    - https://strangiato.github.io/helm-charts/rgw-bucket-helper-0.1.0.tgz
+    version: 0.1.0
+  rgw-user-setup-job:
+  - apiVersion: v2
+    appVersion: latest
+    created: "2021-04-07T23:20:18.912904972Z"
+    description: A Helm chart for configuring an rgw user with OpenShift Container
+      Storage
+    digest: 9182f8057e4712aca935b32d2e6bb99f91a7f2dc9c0db6e0933e239337f1a016
+    name: rgw-user-setup-job
+    type: application
+    urls:
+    - https://strangiato.github.io/helm-charts/rgw-user-setup-job-0.1.0.tgz
+    version: 0.1.0
+generated: "2021-04-07T23:20:18.911464116Z"
