@@ -1,0 +1,49 @@
+seldon: 
+  enabled: false
+
+superset: 
+  enabled: false
+
+kafka: 
+  enabled: false
+
+grafana: 
+  enabled: true
+
+prometheus: 
+  enabled: true
+
+spark: 
+  enabled: false
+
+jupyterHub: 
+  enabled: true
+  singleUserProfile: 
+    enabled: false
+    # profile:
+    #   profiles:
+    #   - name: preload repos
+    #     env:
+    #       - name: JUPYTER_PRELOAD_REPOS
+    #         value: https://github.com/guimou/xraylab_notebooks.git
+    #   - name: globals
+    #     resources:
+    #       requests:
+    #         memory: 500m
+    #         cpu: 500m
+    #       limits:
+    #         memory: 1Gi
+    #         cpu: 1
+
+airflow: 
+  enabled: false
+
+argo: 
+  enabled: false
+
+odhDashboard: 
+  enabled: true
+
+repos:
+  kfManifestsUrl: 'https://github.com/kubeflow/manifests/tarball/v1.2-branch'
+  manifestsUrl: 'https://github.com/opendatahub-io/odh-manifests/tarball/v1.0.5'

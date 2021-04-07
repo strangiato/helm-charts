@@ -1,0 +1,129 @@
+apiVersion: kfdef.apps.kubeflow.org/v1
+kind: KfDef
+metadata:
+  name: opendatahub
+  labels:
+    {{- include "odh.labels" . | nindent 4 }}
+spec:
+  applications:
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: odh-common
+      name: odh-common
+    {{- if .Values.seldon.enabled }}
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: odhseldon/cluster
+      name: odhseldon
+    {{- end }}
+    {{- if .Values.superset.enabled }}
+    - kustomizeConfig:
+        parameters:
+          - name: SUPERSET_ADMIN_PASSWORD
+            value: admin
+        repoRef:
+          name: manifests
+          path: superset
+      name: superset
+    {{- end }}
+    {{- if .Values.kafka.enabled }}
+    - kustomizeConfig:
+        parameters:
+          - name: namespace
+            value: openshift-operators
+        repoRef:
+          name: manifests
+          path: kafka/cluster
+      name: strimzi-operator
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: kafka/kafka
+      name: kafka-cluster
+    {{- end }}
+    {{- if .Values.grafana.enabled }}
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: grafana/cluster
+      name: grafana-cluster
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: grafana/grafana
+      name: grafana-instance
+    {{- end }}
+    {{- if .Values.spark.enabled }}
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: radanalyticsio/spark/cluster
+      name: radanalyticsio-spark-cluster
+    {{- end }}
+    {{- if .Values.prometheus.enabled }}
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: prometheus/cluster
+      name: prometheus-cluster
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: prometheus/operator
+      name: prometheus-operator
+    {{- end }}
+    {{- if .Values.jupyterHub.enabled }}
+    - kustomizeConfig:
+        parameters:
+          - name: s3_endpoint_url
+            value: s3.odh.com
+        repoRef:
+          name: manifests
+          path: jupyterhub/jupyterhub
+      name: jupyterhub
+    - kustomizeConfig:
+        overlays:
+          - additional
+        repoRef:
+          name: manifests
+          path: jupyterhub/notebook-images
+      name: notebook-images
+    {{- end }}
+    {{- if .Values.airflow.enabled }}
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: airflow/operator
+      name: airflow-operator
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: airflow/cluster
+      name: airflow-cluster
+    {{- end }}
+    {{- if .Values.argo.enabled }}
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: odhargo/cluster
+      name: odhargo-cluster
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: odhargo/odhargo
+      name: odhargo
+    {{- end }}
+    {{- if .Values.odhDashboard.enabled }}
+    - kustomizeConfig:
+        repoRef:
+          name: manifests
+          path: odh-dashboard
+      name: odh-dashboard
+    {{- end }}
+  repos:
+    - name: kf-manifests
+      uri: {{ .Values.repos.kfManifestsUrl }}
+    - name: manifests
+      uri: {{ .Values.repos.manifestsUrl }}
