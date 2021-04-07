@@ -17,7 +17,7 @@ spec:
       name: {{ include "rgw-bucket-helper.fullname" . }}
     spec:
       containers:
-        - name: bucket-helper
+        - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           env:
             - name: AWS_ACCESS_KEY_ID
