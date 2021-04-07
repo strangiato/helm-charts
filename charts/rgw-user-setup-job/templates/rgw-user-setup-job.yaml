@@ -1,0 +1,57 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "rgw-user-setup-job.fullname" . }}-{{ .Release.Revision }}
+  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    "helm.sh/hook": post-install
+    "helm.sh/hook-weight": "-5"
+    "helm.sh/hook-delete-policy": hook-succeeded
+  labels:
+    {{- include "rgw-user-setup-job.labels" . | nindent 4 }}
+spec:
+  selector: {}
+  template:
+    metadata:
+      name: {{ include "rgw-user-setup-job.fullname" . }}
+    spec:
+      containers:
+        - name: rgw-user-setup
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          env:
+            - name: RGW_USER
+              value: {{ include "rgw-user-setup-job.userFullname" . }}
+            - name: RGW_DESCRIPTION
+              value: {{ .Values.user.description }}
+            - name: SECRET_NAME
+              value: {{ .Values.secret.name }}
+          command:
+            - /bin/bash
+            - -c
+            - |
+              echo "Creating RGW User: ${RGW_USER}"
+              tools_pod=$(oc get pods -n openshift-storage | grep rook-ceph-tools | grep Running | awk '{print $1}')
+              results=$(oc exec -n openshift-storage ${tools_pod} -- radosgw-admin user create --uid="${RGW_USER}" --display-name="${RGW_DESCRIPTION}")
+              
+              # Get the credentials from the results
+              user=$(echo ${results} | grep -zoP '"user":\s*\K[^\s,]*(?=\s*[,}])')
+              access_key=$(echo ${results} | grep -zoP '"access_key":\s*\K[^\s,]*(?=\s*[,}])')
+              secret_key=$(echo ${results} | grep -zoP '"secret_key":\s*\K[^\s,]*(?=\s*[,}])')
+
+              oc create secret generic ${SECRET_NAME} -n {{ .Release.Namespace}} \
+                --from-literal=USER_ID=${user} \
+                --from-literal=AWS_ACCESS_KEY_ID="${access_key}" \
+                --from-literal=AWS_SECRET_ACCESS_KEY="${secret_key}"
+              oc label secret ${SECRET_NAME} \
+                helm.sh/chart={{ include "rgw-user-setup-job.chart" . }} \
+                app.kubernetes.io/name={{ include "rgw-user-setup-job.name" . }} \
+                app.kubernetes.io/instance={{ .Release.Name }} \
+                {{- if .Chart.AppVersion }}
+                app.kubernetes.io/version={{ .Chart.AppVersion | quote }} \
+                {{- end }}
+                app.kubernetes.io/managed-by={{ .Release.Service }}
+
+      restartPolicy: Never
+      serviceAccount: {{ include "rgw-user-setup-job.serviceAccountName" . }}
+      serviceAccountName: {{ include "rgw-user-setup-job.serviceAccountName" . }}

@@ -1,0 +1,29 @@
+# The user to be created
+user:
+  name: "rgw-user"
+  # include the namespace in the name
+  namespacedName: true
+  description: "rgw-user"
+
+# The name of the secret the credentials will be saved
+secret:
+  name: s3-secret
+
+image:
+  repository: image-registry.openshift-image-registry.svc:5000/openshift/cli
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""

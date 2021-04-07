@@ -1,0 +1,19 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "rgw-user-setup-job.fullname" . }}-exec
+  namespace: openshift-storage
+  labels:
+    {{- include "rgw-user-setup-job.labels" . | nindent 4 }}
+rules:
+  - apiGroups: [""]
+    resources:
+      - pods
+    verbs:
+      - get
+      - list
+      - patch
+      - label
+  - apiGroups: [""]
+    resources: ["pods/exec"]
+    verbs: ["create"]
