@@ -19,6 +19,9 @@ bucket:
   namespacedName: true
   publicPolicy: false
 
+kafka:
+  bootstrapServer: ""
+
 image:
   repository: quay.io/troyer/bucket-helper
   pullPolicy: IfNotPresent
