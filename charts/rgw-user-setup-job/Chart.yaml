@@ -3,6 +3,6 @@ name: rgw-user-setup-job
 description: A Helm chart for configuring an rgw user with OpenShift Container Storage
 type: application
 
-version: 0.1.0
+version: 0.1.1
 
 appVersion: "latest"

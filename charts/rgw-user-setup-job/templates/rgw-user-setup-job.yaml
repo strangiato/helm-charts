@@ -35,14 +35,18 @@ spec:
               results=$(oc exec -n openshift-storage ${tools_pod} -- radosgw-admin user create --uid="${RGW_USER}" --display-name="${RGW_DESCRIPTION}")
               
               # Get the credentials from the results
-              user=$(echo ${results} | grep -zoP '"user":\s*\K[^\s,]*(?=\s*[,}])')
-              access_key=$(echo ${results} | grep -zoP '"access_key":\s*\K[^\s,]*(?=\s*[,}])')
-              secret_key=$(echo ${results} | grep -zoP '"secret_key":\s*\K[^\s,]*(?=\s*[,}])')
+              # grep the correct object
+              # remove any extra spaces
+              # remove extra quotes at the beginning and end of lines
+              user=$(echo ${results} | grep -oP '"user":\s*\K[^\s,]*(?=\s*[,}])' | tr -s " "| sed -e 's/^"//' -e 's/"$//') 
+              access_key=$(echo ${results} | grep -oP '"access_key":\s*\K[^\s,]*(?=\s*[,}])' | tr -s " " | sed -e 's/^"//' -e 's/"$//')
+              secret_key=$(echo ${results} | grep -oP '"secret_key":\s*\K[^\s,]*(?=\s*[,}])' | tr -s " " | sed -e 's/^"//' -e 's/"$//')
 
+              oc delete secret ${SECRET_NAME} -n {{ .Release.Namespace}}
               oc create secret generic ${SECRET_NAME} -n {{ .Release.Namespace}} \
                 --from-literal=USER_ID=${user} \
-                --from-literal=AWS_ACCESS_KEY_ID="${access_key}" \
-                --from-literal=AWS_SECRET_ACCESS_KEY="${secret_key}"
+                --from-literal=AWS_ACCESS_KEY_ID=${access_key} \
+                --from-literal=AWS_SECRET_ACCESS_KEY=${secret_key}
               oc label secret ${SECRET_NAME} \
                 helm.sh/chart={{ include "rgw-user-setup-job.chart" . }} \
                 app.kubernetes.io/name={{ include "rgw-user-setup-job.name" . }} \
