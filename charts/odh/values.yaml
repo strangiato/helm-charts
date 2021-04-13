@@ -46,4 +46,4 @@ odhDashboard:
 
 repos:
   kfManifestsUrl: 'https://github.com/kubeflow/manifests/tarball/v1.2-branch'
-  manifestsUrl: 'https://github.com/opendatahub-io/odh-manifests/tarball/v1.0.5'
+  manifestsUrl: 'https://github.com/opendatahub-io/odh-manifests/tarball/v1.0.8'
