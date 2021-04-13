@@ -3,6 +3,6 @@ name: rgw-bucket-helper
 description: A Helm chart for configuring buckets using OpenShift Container Storage RGW
 type: application
 
-version: 0.1.0
+version: 0.1.3
 
-appVersion: "1.0.0"
+appVersion: "1.0"

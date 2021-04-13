@@ -1,17 +1,15 @@
 s3:
-  host: rook-ceph-rgw.s3a-openshift-storage.svc.cluster.local
+  host: http://rook-ceph-rgw-s3a.openshift-storage.svc.cluster.local
   accessKeyID:
-    value: fake-key
-    # valueFrom:
-    #   secretKeyRef:
-    #     name: s3-secret
-    #     key: AWS_ACCESS_KEY_ID
+    valueFrom:
+      secretKeyRef:
+        name: s3-secret
+        key: AWS_ACCESS_KEY_ID
   secretAccessKey:
-    value: fake-key
-    # valueFrom:
-    #   secretKeyRef:
-    #     name: s3-secret
-    #     key: AWS_ACCESS_KEY_ID
+    valueFrom:
+      secretKeyRef:
+        name: s3-secret
+        key: AWS_SECRET_ACCESS_KEY
 
 bucket:
   name: my-bucket
@@ -20,6 +18,7 @@ bucket:
   publicPolicy: false
 
 kafka:
+  enabled: false
   bootstrapServer: ""
 
 image:

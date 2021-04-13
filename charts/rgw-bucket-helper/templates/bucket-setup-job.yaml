@@ -5,8 +5,8 @@ metadata:
   annotations:
     # This is what defines this resource as a hook. Without this line, the
     # job is considered part of the release.
-    "helm.sh/hook": post-install
-    "helm.sh/hook-weight": "-5"
+    "helm.sh/hook": post-install,post-upgrade
+    "helm.sh/hook-weight": "-1"
     "helm.sh/hook-delete-policy": hook-succeeded
   labels:
     {{- include "rgw-bucket-helper.labels" . | nindent 4 }}
@@ -35,9 +35,11 @@ spec:
                   key: BUCKET_NAME
                   name: {{ .Values.bucket.name }}
             - name: APP_S3_BUCKET_PUBLIC
-              value: {{ .Values.bucket.publicPolicy }}
+              value: {{ .Values.bucket.publicPolicy | quote }}
+            {{- if .Values.kafka.enabled }}
             - name: APP_S3_BUCKET_TOPIC_NAME
               value: {{ .Values.bucket.name }}
             - name: APP_S3_BUCKET_TOPIC_PUSH_ENDPOINT
-              value: {{ .Values.kafka.bootstrapServer }}
+              value: {{ include "rgw-bucket-helper.kafkaBootstrap"  . }}
+            {{- end }}
       restartPolicy: Never

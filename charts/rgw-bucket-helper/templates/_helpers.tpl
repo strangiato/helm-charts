@@ -24,6 +24,21 @@ If release name contains chart name it will be used as a full name.
 {{- end }}
 
 {{/*
+Override the default kafkabootstrap with a global variable if provided
+*/}}
+{{- define "rgw-bucket-helper.kafkaBootstrap" -}}
+{{- $bootstrap := .Values.kafka.bootstrapServer }}
+{{- if .Values.global }}
+    {{- if .Values.global.kafka }}
+        {{- if .Values.global.kafka.bootstrapServer }}
+            {{- $bootstrap = .Values.global.kafka.bootstrapServer -}}
+        {{- end -}}
+    {{- end -}}
+{{- end -}}
+{{- printf "%s" $bootstrap }}
+{{- end -}}
+
+{{/*
 Create chart name and version as used by the chart label.
 */}}
 {{- define "rgw-bucket-helper.chart" -}}
