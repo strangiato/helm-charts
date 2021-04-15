@@ -126,4 +126,4 @@ spec:
     - name: kf-manifests
       uri: {{ .Values.repos.kfManifestsUrl }}
     - name: manifests
-      uri: {{ .Values.repos.manifestsUrl }}
+      uri: "{{ .Values.repos.manifestsUrl }}{{ .Values.repos.manifestsVersion | default .Chart.AppVersion }}"

@@ -46,4 +46,6 @@ odhDashboard:
 
 repos:
   kfManifestsUrl: 'https://github.com/kubeflow/manifests/tarball/v1.2-branch'
-  manifestsUrl: 'https://github.com/opendatahub-io/odh-manifests/tarball/v1.0.8'
+  manifestsUrl: 'https://github.com/opendatahub-io/odh-manifests/tarball/'
+  # Overrides the manifestsVersion whose default is the chart appVersion.
+  manifestsVersion: ""
