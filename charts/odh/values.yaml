@@ -1,23 +1,33 @@
 seldon: 
-  enabled: false
+  cluster:
+    enabled: false
 
 superset: 
   enabled: false
 
-kafka: 
-  enabled: false
+kafka:
+  operator:
+    enabled: false
+  cluster:
+    enabled: false
 
 grafana: 
-  enabled: true
+  cluster:
+    enabled: false
+  instance:
+    enabled: false
 
-prometheus: 
-  enabled: true
+prometheus:
+  operator:
+    enabled: false
+  cluster:
+    enabled: false
 
 spark: 
   enabled: false
 
 jupyterHub: 
-  enabled: true
+  enabled: false
   singleUserProfile: 
     enabled: false
     # profile:
@@ -36,10 +46,16 @@ jupyterHub:
     #         cpu: 1
 
 airflow: 
-  enabled: false
-
-argo: 
-  enabled: false
+  operator:
+    enabled: false
+  cluster:
+    enabled: false
+    
+argo:
+  cluster:
+    enabled: false
+  operator:
+    enabled: false
 
 odhDashboard: 
   enabled: true
