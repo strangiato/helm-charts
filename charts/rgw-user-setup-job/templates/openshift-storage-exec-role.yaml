@@ -3,6 +3,8 @@ kind: Role
 metadata:
   name: {{ include "rgw-user-setup-job.fullname" . }}-exec-{{ .Release.Namespace }}
   namespace: openshift-storage
+  annotations:
+      "helm.sh/hook-weight": "-5"
   labels:
     {{- include "rgw-user-setup-job.labels" . | nindent 4 }}
 rules:
