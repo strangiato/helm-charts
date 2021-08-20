@@ -46,7 +46,7 @@ spec:
               path: /
               port: http
             {{- if .Values.readinessProbe.initialDelaySeconds }}
-            initialDelaySeconds: .Values.readinessProbe.initialDelaySeconds
+            initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
             {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
