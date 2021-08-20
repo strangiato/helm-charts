@@ -45,7 +45,9 @@ spec:
             httpGet:
               path: /
               port: http
-            initialDelaySeconds: 30
+            {{- if .Values.readinessProbe.initialDelaySeconds }}
+            initialDelaySeconds: .Values.readinessProbe.initialDelaySeconds
+            {{- end }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
