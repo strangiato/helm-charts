@@ -1,0 +1,21 @@
+{{- if .Values.route.enabled -}}
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: {{ include "hello-openshift.fullname" . }}
+  labels:
+    {{- include "hello-openshift.labels" . | nindent 4 }}
+spec:
+  to:
+    kind: Service
+    name: {{ include "hello-openshift.fullname" . }}
+    weight: 100
+  port:
+    targetPort: http
+  {{- if .Values.route.tls.enabled }}
+  tls:
+    termination: {{ .Values.route.tls.termination }}
+    insecureEdgeTerminationPolicy: {{ .Values.route.tls.insecureEdgeTerminationPolicy }}
+  {{- end }}
+  wildcardPolicy: None
+{{- end }}
