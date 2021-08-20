@@ -3,10 +3,10 @@ entries:
   hello-openshift:
   - apiVersion: v2
     appVersion: latest
-    created: "2021-08-20T19:27:01.589835173Z"
+    created: "2021-08-20T21:52:28.557039735Z"
     description: A helm chart for generating a deployment using Openshift built in
       hello-openshift image
-    digest: 023bf55d90c99b1295be5886ff9f3fb96d5501f9f0bb2aa26644390847fad5b9
+    digest: eee16117ba8d2d89746054e7c6b39e9abfc2bc54977dc6cef47760fefb2a4b25
     name: hello-openshift
     type: application
     urls:
@@ -15,9 +15,9 @@ entries:
   odh:
   - apiVersion: v2
     appVersion: v1.0.11
-    created: "2021-08-20T19:27:01.590238779Z"
+    created: "2021-08-20T21:52:28.557386847Z"
     description: A Helm chart for Kubernetes
-    digest: 6c1ee7a11671a0f53569075022e65e4742d70d7c3c3931c2e0fa19cbaf57f402
+    digest: 11fb8d62ebca0387e60b9a8f75a9d0dd1edf970e6b99a816d36454d96f812c2b
     name: odh
     type: application
     urls:
@@ -46,10 +46,10 @@ entries:
   rgw-bucket-helper:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2021-08-20T19:27:01.590588584Z"
+    created: "2021-08-20T21:52:28.557694057Z"
     description: A Helm chart for configuring buckets using OpenShift Container Storage
       RGW
-    digest: 84391653a03e9e9d46f4a2ccecb9f709f291c0a0d2ef16b2153117ecdd4098ba
+    digest: 698013a4e92c17fe488dfc15214d7478684efce478cf71199b344d0ce417185c
     name: rgw-bucket-helper
     type: application
     urls:
@@ -69,10 +69,10 @@ entries:
   rgw-user-setup-job:
   - apiVersion: v2
     appVersion: latest
-    created: "2021-08-20T19:27:01.59094129Z"
+    created: "2021-08-20T21:52:28.558003668Z"
     description: A Helm chart for configuring an rgw user with OpenShift Container
       Storage
-    digest: 31f078262ada22108c60c001e7191a38b6935cc31d73009e1429a9618f41e694
+    digest: 48af3370d3f8f3813a5427ccc4e4be7c0eb10de400ec72daf9735a7547fd0a8b
     name: rgw-user-setup-job
     type: application
     urls:
@@ -100,4 +100,4 @@ entries:
     urls:
     - https://strangiato.github.io/helm-charts/rgw-user-setup-job-0.1.0.tgz
     version: 0.1.0
-generated: "2021-08-20T19:27:01.589167763Z"
+generated: "2021-08-20T21:52:28.556370312Z"
