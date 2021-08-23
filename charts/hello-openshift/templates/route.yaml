@@ -5,7 +5,14 @@ metadata:
   name: {{ include "hello-openshift.fullname" . }}
   labels:
     {{- include "hello-openshift.labels" . | nindent 4 }}
+  {{- with .Values.route.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
+  {{- if .Values.route.host }}
+  host: {{ .Values.route.host }}
+  {{- end }}
   to:
     kind: Service
     name: {{ include "hello-openshift.fullname" . }}

@@ -55,10 +55,13 @@ ingress:
 
 route:
   enabled: true
+  # Allow OCP to determine the host if left blank
+  host: ""
   tls:
     enabled: true
     termination: edge
     insecureEdgeTerminationPolicy: Redirect
+  annotations: {}
 
 readinessProbe:
   initialDelaySeconds: 0
