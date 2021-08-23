@@ -3,10 +3,10 @@ entries:
   hello-openshift:
   - apiVersion: v2
     appVersion: latest
-    created: "2021-08-23T21:21:35.868836713Z"
+    created: "2021-08-23T21:26:58.026481094Z"
     description: A helm chart for generating a deployment using Openshift built in
       hello-openshift image
-    digest: 0cacb0e9f73fc0b496f5c933c34bf314966e29f41cec579190bd7f43377e42b7
+    digest: 70c15d2abadbbed46e7af48c7773698648f71bba67e8d1b806b38722e52aa5a6
     name: hello-openshift
     type: application
     urls:
@@ -15,9 +15,9 @@ entries:
   odh:
   - apiVersion: v2
     appVersion: v1.0.11
-    created: "2021-08-23T21:21:35.869322162Z"
+    created: "2021-08-23T21:26:58.026970296Z"
     description: A Helm chart for Kubernetes
-    digest: 2eb3c3a0858bd4b9496491826d28b1ba788ab7d7d10020b26ecdffcd9794612b
+    digest: 9970d4797a670c6dc83b7c574f0cc6a7685e277a46006e3e954ce03f72297f4d
     name: odh
     type: application
     urls:
@@ -46,10 +46,10 @@ entries:
   rgw-bucket-helper:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2021-08-23T21:21:35.869808711Z"
+    created: "2021-08-23T21:26:58.027399099Z"
     description: A Helm chart for configuring buckets using OpenShift Container Storage
       RGW
-    digest: d413a4d76fe96dcef770593f3c9f71cc8103245ae3fd9e59ae7bf5826f098fab
+    digest: 186ab266acfe5acebbd8c458ef897bbcf747cedc4dbdcb1df86bcc8561f7527d
     name: rgw-bucket-helper
     type: application
     urls:
@@ -69,10 +69,10 @@ entries:
   rgw-user-setup-job:
   - apiVersion: v2
     appVersion: latest
-    created: "2021-08-23T21:21:35.870220153Z"
+    created: "2021-08-23T21:26:58.027863901Z"
     description: A Helm chart for configuring an rgw user with OpenShift Container
       Storage
-    digest: d90dfdd8baca72877e2290bfe7da3fd2bb8da740e54e261cc874541b1d2512ad
+    digest: 45edc7d2eb8a7aeb1b59f2186819662ad1689ff6a6cb279087952909c8dd1113
     name: rgw-user-setup-job
     type: application
     urls:
@@ -100,4 +100,4 @@ entries:
     urls:
     - https://strangiato.github.io/helm-charts/rgw-user-setup-job-0.1.0.tgz
     version: 0.1.0
-generated: "2021-08-23T21:21:35.86800373Z"
+generated: "2021-08-23T21:26:58.025622389Z"
