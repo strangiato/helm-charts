@@ -57,6 +57,7 @@ route:
   enabled: true
   # Allow OCP to determine the host if left blank
   host: ""
+  path: ""
   tls:
     enabled: true
     termination: edge
