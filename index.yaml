@@ -3,16 +3,26 @@ entries:
   hello-openshift:
   - apiVersion: v2
     appVersion: latest
-    created: "2021-08-23T21:26:58.026481094Z"
+    created: "2021-09-29T15:38:33.08117369Z"
     description: A helm chart for generating a deployment using Openshift built in
       hello-openshift image
-    digest: 70c15d2abadbbed46e7af48c7773698648f71bba67e8d1b806b38722e52aa5a6
+    digest: 85636d6edbd5928f36e3a46dc1705c0b3301706ec0bd5860f733b42354868a3b
     name: hello-openshift
     type: application
     urls:
     - https://strangiato.github.io/helm-charts/hello-openshift-0.1.0.tgz
     version: 0.1.0
   odh:
+  - apiVersion: v2
+    appVersion: v1.1.0
+    created: "2021-09-29T15:38:33.081583298Z"
+    description: A Helm chart for Kubernetes
+    digest: 932966f9405fcc82baabbc66919bc3c2a4a36329110a24b46b96c50f5e0628c5
+    name: odh
+    type: application
+    urls:
+    - https://strangiato.github.io/helm-charts/odh-0.1.4.tgz
+    version: 0.1.4
   - apiVersion: v2
     appVersion: v1.0.11
     created: "2021-08-23T21:26:58.026970296Z"
@@ -46,10 +56,10 @@ entries:
   rgw-bucket-helper:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2021-08-23T21:26:58.027399099Z"
+    created: "2021-09-29T15:38:33.082046508Z"
     description: A Helm chart for configuring buckets using OpenShift Container Storage
       RGW
-    digest: 186ab266acfe5acebbd8c458ef897bbcf747cedc4dbdcb1df86bcc8561f7527d
+    digest: aec768a5d4d23962f18270bfe802da6b3cf5f7ac8b327ed1c061e5468c832c71
     name: rgw-bucket-helper
     type: application
     urls:
@@ -69,10 +79,10 @@ entries:
   rgw-user-setup-job:
   - apiVersion: v2
     appVersion: latest
-    created: "2021-08-23T21:26:58.027863901Z"
+    created: "2021-09-29T15:38:33.082474416Z"
     description: A Helm chart for configuring an rgw user with OpenShift Container
       Storage
-    digest: 45edc7d2eb8a7aeb1b59f2186819662ad1689ff6a6cb279087952909c8dd1113
+    digest: 32970190c0036364167b8e28514ea00d368367f83893978c271493cc196fe4d9
     name: rgw-user-setup-job
     type: application
     urls:
@@ -100,4 +110,4 @@ entries:
     urls:
     - https://strangiato.github.io/helm-charts/rgw-user-setup-job-0.1.0.tgz
     version: 0.1.0
-generated: "2021-08-23T21:26:58.025622389Z"
+generated: "2021-09-29T15:38:33.080459075Z"
