@@ -15,7 +15,7 @@
 # available as one of the "RELATED_IMAGE_POSTGRES_..." images as part of the PGO
 # installation if you want to deploy the image without setting the "postgres"
 # image variable. This defaults to the below value.
-# postgresVersion: 13
+postgresVersion: 14
 
 # postGISVersion if sets and coupled with a PostGIS enabled container, enables
 # PostGIS. This version number needs to be available as one of the
@@ -32,7 +32,7 @@
 # "pgBouncerConfig". Setting "pgBouncerConfig" will override the value of
 # pgBouncerReplicas. The "RELATED_IMAGE_PGBOUNCER" in the PGO deployment must be
 # set if you want to enable this without explicitly setting "pgBouncer".
-pgBouncerReplicas: 1
+pgBouncerReplicas: 2
 
 # monitoring enables the ability to monitor the Postgres cluster through a
 # metrics exporter than can be scraped by Prometheus. This defaults to the value
@@ -86,7 +86,7 @@ pgBouncerReplicas: 1
 # instanceReplicas lets you set the total number of Postgres replicas. This
 # defaults to the value below. More than on replica enables high availability
 # (HA). Settings "instances" overrides this value.
-instanceReplicas: 1
+instanceReplicas: 2
 
 ##############################
 # Advanced Postgres Settings #
