@@ -79,29 +79,29 @@ spec:
             - name: PGBOUNCE_HOST
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.crunchyPostgres.databaseSecret }}
+                  name: {{ .Release.Name }}-pguser-{{ .Release.Name }}
                   key: pgbouncer-host
             - name: PGBOUNCE_PORT
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.crunchyPostgres.databaseSecret }}
+                  name: {{ .Release.Name }}-pguser-{{ .Release.Name }}
                   key: pgbouncer-port
             - name: MLFLOW_DATABASE_HOST
               value: $(PGBOUNCE_HOST):$(PGBOUNCE_PORT)
             - name: MLFLOW_DATABASE_NAME
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.crunchyPostgres.databaseSecret }}
+                  name: {{ .Release.Name }}-pguser-{{ .Release.Name }}
                   key: dbname
             - name: MLFLOW_DATABASE_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.crunchyPostgres.databaseSecret }}
+                  name: {{ .Release.Name }}-pguser-{{ .Release.Name }}
                   key: password
             - name: MLFLOW_DATABASE_USERNAME
               valueFrom:
                 secretKeyRef:
-                  name: {{ .Values.crunchyPostgres.databaseSecret }}
+                  name: {{ .Release.Name }}-pguser-{{ .Release.Name }}
                   key: user
             {{ end }}
             - name: MLFLOW_PORT
