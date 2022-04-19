@@ -8,8 +8,8 @@ appVersion: "1.25"
 
 icon: https://avatars.githubusercontent.com/u/39938107
 
-dependencies:
-  - name: "postgrescluster"
-    version: "0.2.2"
-    repository: "https://strangiato.github.io/helm-charts/"
-    condition: crunchyPostgres.enabled
+# dependencies:
+#   - name: "postgrescluster"
+#     version: "0.2.2"
+#     repository: "https://strangiato.github.io/helm-charts/"
+#     condition: crunchyPostgres.enabled
