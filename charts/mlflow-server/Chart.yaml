@@ -1,0 +1,9 @@
+apiVersion: v2
+name: mlflow-server
+description: A Helm chart for deploying mlflow on OpenShift
+
+type: application
+
+version: 0.1.0
+
+appVersion: "1.25"
