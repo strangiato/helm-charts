@@ -75,7 +75,7 @@ spec:
                   name: {{ include "mlflow-server.fullname" . }}
                   key: BUCKET_NAME
             {{ end }}
-            {{ if .Values.cruncyPostgres.enabled }}
+            {{ if .Values.crunchyPostgres.enabled }}
             - name: PGBOUNCE_HOST
               valueFrom:
                 secretKeyRef:
