@@ -1,0 +1,122 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "mlflow-server.fullname" . }}
+  labels:
+    {{- include "mlflow-server.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "mlflow-server.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "mlflow-server.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "mlflow-server.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: http
+          env:
+            {{ if .Values.objectBucketClaim.enabled }}
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "mlflow-server.fullname" . }}
+                  key: AWS_ACCESS_KEY_ID
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: {{ include "mlflow-server.fullname" . }}
+                  key: AWS_SECRET_ACCESS_KEY
+            - name: BUCKET_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "mlflow-server.fullname" . }}
+                  key: BUCKET_HOST
+            - name: BUCKET_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "mlflow-server.fullname" . }}
+                  key: BUCKET_PORT
+            - name: MLFLOW_S3_ENDPOINT_URL
+              value: '$(BUCKET_HOST):$(BUCKET_PORT)'
+            - name: MLFLOW_S3_BUCKET_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ include "mlflow-server.fullname" . }}
+                  key: BUCKET_NAME
+            {{ end }}
+            {{ if .Values.cruncyPostgres.enabled }}
+            - name: PGBOUNCE_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.crunchyPostgres.databaseSecret }}
+                  key: pgbouncer-host
+            - name: PGBOUNCE_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.crunchyPostgres.databaseSecret }}
+                  key: pgbouncer-port
+            - name: MLFLOW_DATABASE_HOST
+              value: $(PGBOUNCE_HOST):$(PGBOUNCE_PORT)
+            - name: MLFLOW_DATABASE_NAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.crunchyPostgres.databaseSecret }}
+                  key: dbname
+            - name: MLFLOW_DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.crunchyPostgres.databaseSecret }}
+                  key: password
+            - name: MLFLOW_DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.crunchyPostgres.databaseSecret }}
+                  key: user
+            {{ end }}
+            - name: MLFLOW_PORT
+              value: '8080'
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
