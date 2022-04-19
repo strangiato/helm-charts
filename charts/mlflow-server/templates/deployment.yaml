@@ -46,6 +46,7 @@ spec:
               path: /health
               port: http
           env:
+            {{ if .Values.objectBucketClaim.enabled }}
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
@@ -73,6 +74,7 @@ spec:
                 configMapKeyRef:
                   name: {{ include "mlflow-server.fullname" . }}
                   key: BUCKET_NAME
+            {{ end }}
             - name: MLFLOW_DATABASE_HOST
               value: 'hippo-ha-pgbouncer.mlflow-example.svc:5432'
             - name: MLFLOW_DATABASE_NAME
