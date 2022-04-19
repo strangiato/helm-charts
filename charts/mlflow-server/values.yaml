@@ -38,6 +38,10 @@ objectBucketClaim:
   bucketclass: noobaa-default-bucket-class
   annotations: {}
 
+crunchyPostgres:
+  enabled: true
+  databaseSecret: mlflow-db-pguser-mlflow-db
+
 service:
   type: ClusterIP
   port: 80
