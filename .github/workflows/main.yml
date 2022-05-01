@@ -13,11 +13,3 @@ jobs:
         uses: stefanprodan/helm-gh-pages@master
         with:
           token: ${{ secrets.PACKAGE_TOKEN }}
-      - name: Rebase head_branch on base_ref
-        # Recommended: specify a version such as `@v1.0` rather than `@main`
-        uses: DeeDeeG/rebase-github-action@main
-        with:
-          # Head branch, which will be rebased onto the base_ref.
-          head_branch: gh-pages
-          # Branch, or Git ref, that the head_branch will be rebased onto.
-          base_ref: main
