@@ -1,11 +1,11 @@
-name: release
+name: docs-build
 on:
   push:
     branches:
       - main
 
 jobs:
-  release:
+  docs-build:
     runs-on: ubuntu-latest
     container:
       image: docker.io/jnorwood/helm-docs:latest
