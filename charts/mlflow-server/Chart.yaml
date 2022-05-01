@@ -6,7 +6,7 @@ sources:
   - https://github.com/strangiato/helm-charts/tree/main/charts/mlflow-server
   - https://github.com/strangiato/mlflow-server
 
-version: 0.1.0
+version: 0.1.1
 appVersion: "1.25"
 
 icon: https://avatars.githubusercontent.com/u/39938107
