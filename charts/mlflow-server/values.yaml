@@ -1,26 +1,40 @@
+# -- replicas of MLFlow Server
 replicaCount: 1
 
 image:
+  # -- The image repository to use
   repository: quay.io/troyer/mlflow-server
+  # -- The docker image pull policy
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
+  # -- The image tag to use
+  # @default Chart appVersion
   tag: ""
 
+# -- The image pull secret for the image repository
 imagePullSecrets: []
+# -- String to partially override fullname template (will maintain the release name)
 nameOverride: ""
+# -- String to fully override fullname template
 fullnameOverride: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
+  # -- Enable creation of ServiceAccount for MLFlow Server pod
   create: true
   # Annotations to add to the service account
+  # -- Additional custom annotations for the ServiceAccount
   annotations: {}
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
+  # -- The name of the ServiceAccount to use.
+  # @default fullname template
   name: ""
 
+# -- Map of annotations to add to the pods
 podAnnotations: {}
 
+# -- 
 podSecurityContext: {}
   # fsGroup: 2000
 
@@ -33,17 +47,25 @@ securityContext: {}
   # runAsUser: 1000
 
 objectBucketClaim:
+  # -- Enable creation of s3 bucket with objectBucketClaim for artifact storage
   enabled: true
+  # -- StorageClassName for creation of the objectBucketClaim
   storageClassName: openshift-storage.noobaa.io
+  # -- BucketClass name for the creation of the objectBucketClaim
   bucketclass: noobaa-default-bucket-class
+  # -- Additional custom annotations for the objectBucketClaim
   annotations: {}
 
 crunchyPostgres:
+  # -- Enable creation of a postgres instance using crunchyPostgres operator
   enabled: true
+  # -- The name of the secret for the postgres database
   databaseSecret: mlflow-db-pguser-mlflow-db
 
 service:
+  # -- Kubernetes Service type
   type: ClusterIP
+  # -- MLFlow server port
   port: 80
 
 ingress:
@@ -60,16 +82,25 @@ ingress:
   #      - chart-example.local
 
 route:
+  # -- Enable creation of the OpenShift Route object
   enabled: true
   # Allow OCP to determine the host if left blank
+  # -- The hostname for the route
+  # @default Set by OpenShift
   host: ""
+  # -- The path for the OpenShift route
   path: ""
   tls:
+    # -- Enable secure route settings
     enabled: true
+    # -- Secure route termination policy
     termination: edge
+    # -- Insecure route termination policy
     insecureEdgeTerminationPolicy: Redirect
+  # -- Additional custom annotations for the route
   annotations: {}
 
+# -- Resource configuration for the MLFlow Server pod
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
@@ -89,8 +120,11 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
+# -- Node selector for the MlFlow Server pod
 nodeSelector: {}
 
+# -- Tolerations for the MLFlow Server pod
 tolerations: []
 
+# -- Affinity configuration for the MLFlow Server pod
 affinity: {}
