@@ -8,7 +8,7 @@ image:
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   # -- The image tag to use
-  # @default Chart appVersion
+  # @default -- Chart appVersion
   tag: ""
 
 # -- The image pull secret for the image repository
@@ -28,7 +28,7 @@ serviceAccount:
   # The name of the service account to use.
   # If not set and create is true, a name is generated using the fullname template
   # -- The name of the ServiceAccount to use.
-  # @default fullname template
+  # @default -- fullname template
   name: ""
 
 # -- Map of annotations to add to the pods
@@ -86,7 +86,7 @@ route:
   enabled: true
   # Allow OCP to determine the host if left blank
   # -- The hostname for the route
-  # @default Set by OpenShift
+  # @default -- Set by OpenShift
   host: ""
   # -- The path for the OpenShift route
   path: ""
