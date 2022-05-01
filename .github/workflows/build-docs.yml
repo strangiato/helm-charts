@@ -12,7 +12,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build helm-docs
-        run: helm-docs charts/hello-openshift
-      - uses: EndBug/add-and-commit@v9 
-        with:
-          message: 'Automatic build of docs from GitHub Action'
+        run: helm-docs
+      - uses: stefanzweifel/git-auto-commit-action@v4
