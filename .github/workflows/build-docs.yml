@@ -7,10 +7,11 @@ on:
 jobs:
   docs-build:
     runs-on: ubuntu-latest
-    container:
-      image: docker.io/jnorwood/helm-docs:latest
     steps:
       - uses: actions/checkout@v2
       - name: Build helm-docs
+        uses: docker://docker.io/jnorwood/helm-docs:latest
         run: helm-docs
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: EndBug/add-and-commit@v9 
+        with:
+          message: 'Automatic build of docs from GitHub Action'
