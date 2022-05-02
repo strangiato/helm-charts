@@ -1,33 +1,50 @@
+odhCommon:
+  # -- Enable install of ODH Common resources
+  enable: true
+
 seldon: 
-  cluster:
+  operator:
+    # -- Enable install of Seldon Operator
     enabled: false
 
 superset: 
+  # -- Enable install of Apache Superset instance
   enabled: false
 
 kafka:
   operator:
+    # -- Enable install of the Strimzi Kafka Operator
     enabled: false
-  cluster:
+    # -- Enable install of a Kafka instance
+  instance:
     enabled: false
 
 grafana: 
-  cluster:
+  operator:
+    # -- Enable install of the Grafana Operator
     enabled: false
   instance:
+    # -- Enable install of a Grafana instance
     enabled: false
 
 prometheus:
   operator:
+    # -- Enable install of the Prometheus Operator
     enabled: false
-  cluster:
+    # -- Enable install of a Prometheus instance
+  instance:
     enabled: false
 
 spark: 
+  # -- Enable install of the Spark Operator
   enabled: false
 
 jupyterHub: 
-  enabled: false
+  # -- Enable the install of a JupyterHub instance
+  enabled: true
+  additionalNotebooks:
+    # -- Enable the install of additional Jupyter Notebook images
+    enabled: true
   singleUserProfile: 
     enabled: false
     # profile:
@@ -47,21 +64,34 @@ jupyterHub:
 
 airflow: 
   operator:
+    # -- Enable install of the Airflow Operator
     enabled: false
-  cluster:
+  instance:
+    # -- Enable install of the Airflow instance
     enabled: false
     
-argo:
-  cluster:
-    enabled: false
+argoWorkflows:
   operator:
+    # -- Enable install of the Argo Workflows Operator
+    enabled: false
+  instance:
+    # -- Enable install of the Argo Workflows instance
     enabled: false
 
+modelMesh:
+  # -- Enable install of the Model Mesh instnace
+  enabled: true
+
 odhDashboard: 
+  # -- Enable install of the ODH Dashboard instance
   enabled: true
 
 repos:
-  kfManifestsUrl: 'https://github.com/kubeflow/manifests/tarball/v1.3-branch'
+  # -- KubeFlow manifest URL
+  kfManifestsUrl: 'https://github.com/opendatahub-io/manifests/tarball/v1.4.0-rc.2-openshift'
+  # -- ODH Manifests URL base
   manifestsUrl: 'https://github.com/opendatahub-io/odh-manifests/tarball/'
   # Overrides the manifestsVersion whose default is the chart appVersion.
+  # -- Used to overwrite teh manifestsURL version from the chart appVersion
+  # @default -- Chart appVersion
   manifestsVersion: ""
