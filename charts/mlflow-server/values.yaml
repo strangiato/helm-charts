@@ -59,8 +59,6 @@ objectBucketClaim:
 crunchyPostgres:
   # -- Enable creation of a postgres instance using crunchyPostgres operator
   enabled: true
-  # -- The name of the secret for the postgres database
-  databaseSecret: mlflow-db-pguser-mlflow-db
 
 service:
   # -- Kubernetes Service type
