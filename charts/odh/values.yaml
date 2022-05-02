@@ -46,6 +46,7 @@ jupyterHub:
     # -- Enable the install of additional Jupyter Notebook images
     enabled: true
   singleUserProfile: 
+    # -- Enable the configuration of a singleUserProfile for JupyterHub
     enabled: false
     # profile:
     #   profiles:
