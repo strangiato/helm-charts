@@ -40,15 +40,12 @@ spec:
           path: kafka/cluster
       name: strimzi-operator
     {{- end }}
-    {{- if .Values.kafka.cluster.enabled }}
+    {{- if .Values.kafka.instance.enabled }}
     - kustomizeConfig:
-      parameters:
-      - name: namespace
-        value: openshift-operators
       repoRef:
         name: manifests
-        path: kafka/cluster
-    name: strimzi-operator
+        path: kafka/kafka
+      name: kafka-cluster
     {{- end }}
     {{- if .Values.grafana.operator.enabled }}
     - kustomizeConfig:
@@ -137,7 +134,7 @@ spec:
       repoRef:
         name: manifests
         path: model-mesh
-    name: model-mesh
+      name: model-mesh
     {{- end }}
     {{- if .Values.odhDashboard.enabled }}
     - kustomizeConfig:
