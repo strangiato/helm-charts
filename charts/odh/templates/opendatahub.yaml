@@ -6,12 +6,14 @@ metadata:
     {{- include "odh.labels" . | nindent 4 }}
 spec:
   applications:
+    {{- if .Values.odhCommon.enabled }}
     - kustomizeConfig:
         repoRef:
           name: manifests
           path: odh-common
       name: odh-common
-    {{- if .Values.seldon.cluster.enabled }}
+    {{- end }}
+    {{- if .Values.seldon.operator.enabled }}
     - kustomizeConfig:
         repoRef:
           name: manifests
@@ -40,12 +42,15 @@ spec:
     {{- end }}
     {{- if .Values.kafka.cluster.enabled }}
     - kustomizeConfig:
-        repoRef:
-          name: manifests
-          path: kafka/kafka
-      name: kafka-cluster
+      parameters:
+      - name: namespace
+        value: openshift-operators
+      repoRef:
+        name: manifests
+        path: kafka/cluster
+    name: strimzi-operator
     {{- end }}
-    {{- if .Values.grafana.cluster.enabled }}
+    {{- if .Values.grafana.operator.enabled }}
     - kustomizeConfig:
         repoRef:
           name: manifests
@@ -66,7 +71,7 @@ spec:
           path: radanalyticsio/spark/cluster
       name: radanalyticsio-spark-cluster
     {{- end }}
-    {{- if .Values.prometheus.cluster.enabled }}
+    {{- if .Values.prometheus.instance.enabled }}
     - kustomizeConfig:
         repoRef:
           name: manifests
@@ -89,6 +94,7 @@ spec:
           name: manifests
           path: jupyterhub/jupyterhub
       name: jupyterhub
+    {{- if .Values.jupyterHub.additionalNotebooks.enabled }}
     - kustomizeConfig:
         overlays:
           - additional
@@ -97,33 +103,41 @@ spec:
           path: jupyterhub/notebook-images
       name: notebook-images
     {{- end }}
-    {{- if .Values.airflow.operator.enabled }}
+    {{- end }}
+    {{- if .Values.airflow.instance.enabled }}
     - kustomizeConfig:
         repoRef:
           name: manifests
           path: airflow/operator
       name: airflow-operator
     {{- end }}
-    {{- if .Values.airflow.cluster.enabled }}
+    {{- if .Values.airflow.operator.enabled }}
     - kustomizeConfig:
         repoRef:
           name: manifests
           path: airflow/cluster
       name: airflow-cluster
     {{- end }}
-    {{- if .Values.argo.cluster.enabled }}
+    {{- if .Values.argoWorkflows.operator.enabled }}
     - kustomizeConfig:
         repoRef:
           name: manifests
           path: odhargo/cluster
       name: odhargo-cluster
     {{- end }}
-    {{- if .Values.argo.operator.enabled }}
+    {{- if .Values.argoWorkflows.instance.enabled }}
     - kustomizeConfig:
         repoRef:
           name: manifests
           path: odhargo/odhargo
       name: odhargo
+    {{- end }}
+    {{- if .Values.modelMesh.enabled }}
+    - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: model-mesh
+    name: model-mesh
     {{- end }}
     {{- if .Values.odhDashboard.enabled }}
     - kustomizeConfig:
