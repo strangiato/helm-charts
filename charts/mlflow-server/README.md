@@ -52,7 +52,6 @@ dependencies:
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
-| crunchyPostgres.databaseSecret | string | `"mlflow-db-pguser-mlflow-db"` | The name of the secret for the postgres database |
 | crunchyPostgres.enabled | bool | `true` | Enable creation of a postgres instance using crunchyPostgres operator |
 | fullnameOverride | string | `""` | String to fully override fullname template |
 | image.pullPolicy | string | `"IfNotPresent"` | The docker image pull policy |
