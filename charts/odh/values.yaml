@@ -15,8 +15,8 @@ kafka:
   operator:
     # -- Enable install of the Strimzi Kafka Operator
     enabled: false
-    # -- Enable install of a Kafka instance
   instance:
+    # -- Enable install of a Kafka instance
     enabled: false
 
 grafana: 
