@@ -80,7 +80,7 @@ argoWorkflows:
 
 modelMesh:
   # -- Enable install of the Model Mesh instnace
-  enabled: true
+  enabled: false
 
 odhDashboard: 
   # -- Enable install of the ODH Dashboard instance
