@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ include "mlflow-server.fullname" . }}
+  annotations:
+    app.openshift.io/vcs-uri: github.com/strangiato/mlflow-server
   labels:
     {{- include "mlflow-server.labels" . | nindent 4 }}
 spec:
