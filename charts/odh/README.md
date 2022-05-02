@@ -45,7 +45,7 @@ dependencies:
 | jupyterHub.additionalNotebooks.enabled | bool | `true` | Enable the install of additional Jupyter Notebook images |
 | jupyterHub.enabled | bool | `true` | Enable the install of a JupyterHub instance |
 | jupyterHub.singleUserProfile.enabled | bool | `false` | Enable the configuration of a singleUserProfile for JupyterHub |
-| kafka.instance.enabled | bool | `false` |  |
+| kafka.instance.enabled | bool | `false` | Enable install of a Kafka instance |
 | kafka.operator.enabled | bool | `false` | Enable install of the Strimzi Kafka Operator |
 | modelMesh.enabled | bool | `false` | Enable install of the Model Mesh instnace |
 | odhCommon.enable | bool | `true` | Enable install of ODH Common resources |
