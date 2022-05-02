@@ -1,3 +1,6 @@
 .ideas/
 
 manifest.yaml
+
+# Chart dependencies
+**/charts/*.tgz
