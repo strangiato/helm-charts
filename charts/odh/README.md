@@ -44,10 +44,10 @@ dependencies:
 | grafana.operator.enabled | bool | `false` | Enable install of the Grafana Operator |
 | jupyterHub.additionalNotebooks.enabled | bool | `true` | Enable the install of additional Jupyter Notebook images |
 | jupyterHub.enabled | bool | `true` | Enable the install of a JupyterHub instance |
-| jupyterHub.singleUserProfile.enabled | bool | `false` |  |
+| jupyterHub.singleUserProfile.enabled | bool | `false` | Enable the configuration of a singleUserProfile for JupyterHub |
 | kafka.instance.enabled | bool | `false` |  |
 | kafka.operator.enabled | bool | `false` | Enable install of the Strimzi Kafka Operator |
-| modelMesh.enabled | bool | `true` | Enable install of the Model Mesh instnace |
+| modelMesh.enabled | bool | `false` | Enable install of the Model Mesh instnace |
 | odhCommon.enable | bool | `true` | Enable install of ODH Common resources |
 | odhDashboard.enabled | bool | `true` | Enable install of the ODH Dashboard instance |
 | prometheus.instance.enabled | bool | `false` |  |
