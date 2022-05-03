@@ -70,7 +70,7 @@ spec:
                   name: {{ include "mlflow-server.fullname" . }}
                   key: BUCKET_PORT
             - name: MLFLOW_S3_ENDPOINT_URL
-              value: '$(BUCKET_HOST):$(BUCKET_PORT)'
+              value: 'https://$(BUCKET_HOST):$(BUCKET_PORT)'
             - name: MLFLOW_S3_BUCKET_NAME
               valueFrom:
                 configMapKeyRef:
