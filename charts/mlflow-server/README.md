@@ -11,7 +11,7 @@ To access charts from this from the cli repository add it:
 ```sh
 helm repo add strangiato https://strangiato.github.io/helm-charts/
 helm repo update strangiato
-helm install mlflow-server strangiato/mlflow-server
+helm install [release-name] strangiato/mlflow-server
 ```
 
 To include a chart from this repository in an umbrella chart, include it in your dependencies in your `Chart.yaml` file.
@@ -27,8 +27,8 @@ version: 0.1.0
 appVersion: "1.16.0"
 
 dependencies:
-  - name: "mflow-server"
-    version: "0.1.0"
+  - name: "mlflow-server"
+    version: "0.1.1
     repository: "https://strangiato.github.io/helm-charts/"
 ```
 
