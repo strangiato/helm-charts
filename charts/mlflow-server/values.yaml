@@ -11,6 +11,16 @@ image:
   # @default -- Chart appVersion
   tag: ""
 
+trainingTestImage:
+  # -- The image repository used for the helm training test
+  repository: quay.io/troyer/mlflow-server-training-test
+  # -- The docker image pull policy
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  # -- The image tag to use
+  # @default -- Chart appVersion
+  tag: ""
+
 # -- The image pull secret for the image repository
 imagePullSecrets: []
 # -- String to partially override fullname template (will maintain the release name)
