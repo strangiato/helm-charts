@@ -1,0 +1,51 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "mlflow-server.fullname" . }}-test-training"
+  labels:
+    {{- include "mlflow-server.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: training
+      image: "{{ .Values.trainingTestImage.repository }}:{{ .Values.trainingTestImage.tag | default .Chart.AppVersion }}"
+      imagePullPolicy: "{{ .Values.trainingTestImage.pullPolicy}}"
+      env:
+        - name: MLFLOW_TRACKING_URI
+          value: 'http://{{ include "mlflow-server.fullname" . }}:{{ .Values.service.port }}'
+        - name: MLFLOW_EXPERIMENT
+          value: helm-test
+        {{ if .Values.objectBucketClaim.enabled }}
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "mlflow-server.fullname" . }}
+              key: AWS_ACCESS_KEY_ID
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ include "mlflow-server.fullname" . }}
+              key: AWS_SECRET_ACCESS_KEY
+        - name: BUCKET_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: {{ include "mlflow-server.fullname" . }}
+              key: BUCKET_HOST
+        - name: BUCKET_PORT
+          valueFrom:
+            configMapKeyRef:
+              name: {{ include "mlflow-server.fullname" . }}
+              key: BUCKET_PORT
+        - name: MLFLOW_S3_ENDPOINT_URL
+          value: 'https://$(BUCKET_HOST):$(BUCKET_PORT)'
+        - name: MLFLOW_S3_BUCKET_NAME
+          valueFrom:
+            configMapKeyRef:
+              name: {{ include "mlflow-server.fullname" . }}
+              key: BUCKET_NAME
+        - name: AWS_CA_BUNDLE
+          value: /run/secrets/kubernetes.io/serviceaccount/service-ca.crt
+        {{ end }}
+  restartPolicy: Never
+  serviceAccountName: {{ include "mlflow-server.serviceAccountName" . }}
