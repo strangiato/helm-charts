@@ -31,7 +31,7 @@ database:
 
 serviceAccount:
   # Specifies whether a service account should be created
-  # -- Enable creation of ServiceAccount for MLFlow Server pod
+  # -- Enable creation of ServiceAccount for postgresql pod
   create: true
   # Annotations to add to the service account
   # -- Additional custom annotations for the ServiceAccount
@@ -63,7 +63,7 @@ service:
   # -- postgresql server port
   port: 5432
 
-# -- Resource configuration for the MLFlow Server pod
+# -- Resource configuration for the postgresql pod
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
@@ -83,11 +83,11 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
-# -- Node selector for the MlFlow Server pod
+# -- Node selector for the postgresql pod
 nodeSelector: {}
 
-# -- Tolerations for the MLFlow Server pod
+# -- Tolerations for the postgresql pod
 tolerations: []
 
-# -- Affinity configuration for the MLFlow Server pod
+# -- Affinity configuration for the postgresql pod
 affinity: {}
