@@ -3,10 +3,10 @@ entries:
   hello-openshift:
   - apiVersion: v2
     appVersion: latest
-    created: "2022-06-08T19:53:53.72588704Z"
+    created: "2022-06-08T21:35:07.551373446Z"
     description: A helm chart for generating a deployment using Openshift built in
       hello-openshift image
-    digest: 0c6c7e75cecd7959aca3049384b59b7f5ef41fceb9f5dfc954a5fe0d34ce4fff
+    digest: e62c1f1dc96ea3c8b96d033f2cc0fd41d9166a633aebfb95663a28e395b3c50f
     name: hello-openshift
     type: application
     urls:
@@ -15,14 +15,14 @@ entries:
   mlflow-server:
   - apiVersion: v2
     appVersion: "1.26"
-    created: "2022-06-08T19:53:53.72721894Z"
+    created: "2022-06-08T21:35:07.554525137Z"
     dependencies:
     - condition: crunchyPostgres.enabled
       name: postgrescluster
       repository: https://strangiato.github.io/helm-charts/
       version: 0.2.2
     description: A Helm chart for deploying mlflow on OpenShift
-    digest: f95ee37c7e81b963d2380900db0f1730a49861c92eb2a9cce13fb0d04451f261
+    digest: 0ad02e391658c867ecea9a84cb058475cf1d7e6b4b395cb536e2f016badc6b30
     icon: https://avatars.githubusercontent.com/u/39938107
     name: mlflow-server
     sources:
@@ -103,9 +103,9 @@ entries:
   odh:
   - apiVersion: v2
     appVersion: v1.1.2
-    created: "2022-06-08T19:53:53.72774754Z"
+    created: "2022-06-08T21:35:07.555005336Z"
     description: A Helm chart for configuring OpenDataHub on OpenShift
-    digest: 10ec6d4d2ccf7aba7c83b709bfd57486a1844b40b68fd5f41838f41109cd8c4c
+    digest: fc7130daf79afc7007dffcac7971bbb65ba682d2d116390cbaebeafa7056876a
     name: odh
     type: application
     urls:
@@ -154,9 +154,9 @@ entries:
   postgrescluster:
   - apiVersion: v2
     appVersion: 5.0.5
-    created: "2022-06-08T19:53:53.72827304Z"
+    created: "2022-06-08T21:35:07.555549834Z"
     description: A Helm chart for deploying Postgres using the Crunchy Operator
-    digest: 0bc994f589628cc6734f3af735fb99a90ffd499d53b07cf5cd3c551408b8d42a
+    digest: dd923e98ff91a5b7c9654ab7e18cd2ad3da8ddb5a793c42f392921f0f6cbc43b
     name: postgrescluster
     type: application
     urls:
@@ -165,9 +165,9 @@ entries:
   postgresql:
   - apiVersion: v2
     appVersion: "10"
-    created: "2022-06-08T19:53:53.72877934Z"
+    created: "2022-06-08T21:35:07.555995733Z"
     description: A Helm chart for deploying a basic postgres chart on OpenShift
-    digest: 3b8022ca768cd27363d2c0f9c01a0738518dd27d8b873c3c47e8f5e19ef01360
+    digest: ed5635c2b1eb6fcf075f682fd30977cec8516a69a1fe77e1330b161b7b2790c9
     name: postgresql
     type: application
     urls:
@@ -176,10 +176,10 @@ entries:
   rgw-bucket-helper:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2022-06-08T19:53:53.72924854Z"
+    created: "2022-06-08T21:35:07.556348132Z"
     description: A Helm chart for configuring buckets using OpenShift Container Storage
       RGW
-    digest: 490936b3b7c3fcdb17bd875afeb13b8b566dee16714b2fc93d38cfa732b5a69f
+    digest: ae038574e13fb380bcd729c41005dae8b57f08d05bc0b4aa486b16be5fb97a74
     name: rgw-bucket-helper
     type: application
     urls:
@@ -199,10 +199,10 @@ entries:
   rgw-user-setup-job:
   - apiVersion: v2
     appVersion: latest
-    created: "2022-06-08T19:53:53.72965284Z"
+    created: "2022-06-08T21:35:07.556692131Z"
     description: A Helm chart for configuring an rgw user with OpenShift Container
       Storage
-    digest: 5471250aa66b1fa5c1e037e5a0a9802fae484deae66f5bba18367af3a4834cd2
+    digest: 2e5bb6c768668a66df0f56e7218758d9e09830bceefb68a054992a4016046e62
     name: rgw-user-setup-job
     type: application
     urls:
@@ -230,4 +230,4 @@ entries:
     urls:
     - https://strangiato.github.io/helm-charts/rgw-user-setup-job-0.1.0.tgz
     version: 0.1.0
-generated: "2022-06-08T19:53:53.72504974Z"
+generated: "2022-06-08T21:35:07.54971685Z"
