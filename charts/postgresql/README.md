@@ -28,7 +28,7 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: "postgresql"
-    version: "0.1.0
+    version: "0.1.0"
     repository: "https://strangiato.github.io/helm-charts/"
 ```
 

@@ -28,7 +28,7 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: "mlflow-server"
-    version: "0.2.1
+    version: "0.2.1"
     repository: "https://strangiato.github.io/helm-charts/"
 ```
 

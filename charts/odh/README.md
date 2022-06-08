@@ -28,7 +28,7 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: "odh"
-    version: "0.1.6
+    version: "0.1.6"
     repository: "https://strangiato.github.io/helm-charts/"
 ```
 
