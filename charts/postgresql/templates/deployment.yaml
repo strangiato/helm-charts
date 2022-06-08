@@ -6,9 +6,7 @@ metadata:
     {{- include "postgresql.labels" . | nindent 4 }}
     app.openshift.io/runtime: postgresql
 spec:
-  {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
-  {{- end }}
   strategy:
     type: Recreate
   selector:
