@@ -19,14 +19,21 @@ nameOverride: ""
 fullnameOverride: ""
 
 persistence:
+  # -- Read/Write mode of the PVC
   accessMode: ReadWriteOnce
+  # -- Size of the PVC
   size: 1Gi
+  # -- Storage class name used to create the PVC.   If not provided the default storage class will be utilized.
   storageClassName: ""
+  # -- Volume mode used to create the PVC.   If not provided the default volume mode will be utilized.
   volumeMode: ""
 
 database:
+  # -- The name of the database
   name: sampledb
+  # -- The user name that will be created for the database
   user: user
+  # -- The password for the database
   password: password
 
 serviceAccount:
@@ -75,13 +82,6 @@ resources: {}
   # requests:
   #   cpu: 100m
   #   memory: 128Mi
-
-autoscaling:
-  enabled: false
-  minReplicas: 1
-  maxReplicas: 100
-  targetCPUUtilizationPercentage: 80
-  # targetMemoryUtilizationPercentage: 80
 
 # -- Node selector for the postgresql pod
 nodeSelector: {}
