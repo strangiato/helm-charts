@@ -1,0 +1,93 @@
+# -- replicas of postgresql server
+replicaCount: 1
+
+image:
+  # -- The image repository to use
+  repository: image-registry.openshift-image-registry.svc:5000/openshift/postgresql 
+  # -- The docker image pull policy
+  pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+  # -- The image tag to use
+  # @default -- Chart appVersion
+  tag: ""
+
+# -- The image pull secret for the image repository
+imagePullSecrets: []
+# -- String to partially override fullname template (will maintain the release name)
+nameOverride: ""
+# -- String to fully override fullname template
+fullnameOverride: ""
+
+persistence:
+  accessMode: ReadWriteOnce
+  size: 1Gi
+  storageClassName: ""
+  volumeMode: ""
+
+database:
+  name: sampledb
+  user: user
+  password: password
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  # -- Enable creation of ServiceAccount for MLFlow Server pod
+  create: true
+  # Annotations to add to the service account
+  # -- Additional custom annotations for the ServiceAccount
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  # -- The name of the ServiceAccount to use.
+  # @default -- fullname template
+  name: ""
+
+# -- Map of annotations to add to the pods
+podAnnotations: {}
+
+# -- 
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+service:
+  # -- Kubernetes Service type
+  type: ClusterIP
+  # -- postgresql server port
+  port: 5432
+
+# -- Resource configuration for the MLFlow Server pod
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+# -- Node selector for the MlFlow Server pod
+nodeSelector: {}
+
+# -- Tolerations for the MLFlow Server pod
+tolerations: []
+
+# -- Affinity configuration for the MLFlow Server pod
+affinity: {}
