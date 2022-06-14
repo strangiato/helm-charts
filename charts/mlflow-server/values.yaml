@@ -19,7 +19,7 @@ trainingTestImage:
   # Overrides the image tag whose default is the chart appVersion.
   # -- The image tag to use
   # @default -- Chart appVersion
-  tag: ""
+  tag: "latest"
 
 # -- The image pull secret for the image repository
 imagePullSecrets: []
