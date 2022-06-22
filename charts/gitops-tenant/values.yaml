@@ -1,0 +1,29 @@
+nameOverride: ""
+fullnameOverride: ""
+
+argoCD:
+  name: argocd
+  resourceCustomizations: ""
+  repos: []
+  
+devNamespace:
+  create: true
+  nameOverride: ""
+  annotations: {}
+  labels: {}
+
+testNamespace:
+  create: true
+  nameOverride: ""
+  annotations: {}
+  labels: {}
+
+prodNamespace:
+  create: true
+  nameOverride: ""
+  annotations: {}
+  labels: {}
+
+adminGroup:
+  create: true
+  members: []
