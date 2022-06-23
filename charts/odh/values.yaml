@@ -1,6 +1,6 @@
 odhCommon:
   # -- Enable install of ODH Common resources
-  enable: true
+  enabled: true
 
 seldon: 
   operator:
