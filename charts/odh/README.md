@@ -2,7 +2,7 @@
 
 A Helm chart for configuring OpenDataHub on OpenShift
 
-![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.2.0](https://img.shields.io/badge/AppVersion-v1.2.0-informational?style=flat-square)
+![Version: 0.2.1](https://img.shields.io/badge/Version-0.2.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.2.0](https://img.shields.io/badge/AppVersion-v1.2.0-informational?style=flat-square)
 
 ## Installing the Chart
 
@@ -28,7 +28,7 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: "odh"
-    version: "0.2.0"
+    version: "0.2.1"
     repository: "https://strangiato.github.io/helm-charts/"
 ```
 
@@ -48,7 +48,7 @@ dependencies:
 | kafka.instance.enabled | bool | `false` | Enable install of a Kafka instance |
 | kafka.operator.enabled | bool | `false` | Enable install of the Strimzi Kafka Operator |
 | modelMesh.enabled | bool | `false` | Enable install of the Model Mesh instnace |
-| odhCommon.enable | bool | `true` | Enable install of ODH Common resources |
+| odhCommon.enabled | bool | `true` | Enable install of ODH Common resources |
 | odhDashboard.enabled | bool | `true` | Enable install of the ODH Dashboard instance |
 | prometheus.instance.enabled | bool | `false` |  |
 | prometheus.operator.enabled | bool | `false` | Enable install of the Prometheus Operator |
