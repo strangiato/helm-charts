@@ -5,25 +5,36 @@ argoCD:
   name: argocd
   resourceCustomizations: ""
   repos: []
+
+gitopsNamespace:
+  create: true
+  nameOverride: ""
+  adminGroupRole: admin
+  annotations: {}
+  labels: {}
   
 devNamespace:
   create: true
   nameOverride: ""
+  adminGroupRole: admin
   annotations: {}
   labels: {}
 
 testNamespace:
   create: true
   nameOverride: ""
+  adminGroupRole: viewer
   annotations: {}
   labels: {}
 
 prodNamespace:
   create: true
   nameOverride: ""
+  adminGroupRole: viewer
   annotations: {}
   labels: {}
 
 adminGroup:
   create: true
+  nameOverride: ""
   members: []

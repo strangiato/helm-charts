@@ -14,12 +14,34 @@ If release name contains chart name it will be used as a full name.
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
-{{- $name := default .Chart.Name .Values.nameOverride }}
-{{- if contains $name .Release.Name }}
 {{- .Release.Name | trunc 63 | trimSuffix "-" }}
-{{- else }}
-{{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" }}
 {{- end }}
+{{- end }}
+
+{{- define "gitops-tenant.gitops-name" -}}
+{{- if .Values.gitopsNamespace.nameOverride }}
+{{- .Values.gitopsNamespace.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- else }}
+{{- $fullname := include "gitops-tenant.fullname" . }}
+{{- printf "%s-%s"  $fullname "gitops"  }}
+{{- end }}
+{{- end }}
+
+{{- define "gitops-tenant.dev-name" -}}
+{{- if .Values.devNamespace.nameOverride }}
+{{- .Values.devNamespace.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- else }}
+{{- $fullname := include "gitops-tenant.fullname" . }}
+{{- printf "%s-%s"  $fullname "dev"  }}
+{{- end }}
+{{- end }}
+
+{{- define "gitops-tenant.admin-group" -}}
+{{- if .Values.adminGroup.nameOverride }}
+{{- .Values.adminGroup.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- else }}
+{{- $fullname := include "gitops-tenant.fullname" . }}
+{{- printf "%s-%s"  $fullname "admins"  }}
 {{- end }}
 {{- end }}
 
