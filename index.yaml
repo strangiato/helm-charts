@@ -3,16 +3,35 @@ entries:
   hello-openshift:
   - apiVersion: v2
     appVersion: latest
-    created: "2022-06-28T21:23:55.135377993Z"
+    created: "2022-07-03T01:40:36.876511688Z"
     description: A helm chart for generating a deployment using Openshift built in
       hello-openshift image
-    digest: a007ad2aaf257021ae78c1572cb43b14455f9b228a47fe73c7ef10d46b91b6e0
+    digest: 81f85c7a024dba84fcbe6c3f4cd79c2f8f233d58adcd70856994ea0ee9c5be00
     name: hello-openshift
     type: application
     urls:
     - https://strangiato.github.io/helm-charts/hello-openshift-0.1.0.tgz
     version: 0.1.0
   mlflow-server:
+  - apiVersion: v2
+    appVersion: "1.27"
+    created: "2022-07-03T01:40:36.878645922Z"
+    dependencies:
+    - condition: crunchyPostgres.enabled
+      name: postgrescluster
+      repository: https://strangiato.github.io/helm-charts/
+      version: 0.2.2
+    description: A Helm chart for deploying mlflow on OpenShift
+    digest: e4f8c1c309b0bcbb1fa442e2750c86aa7f9632ed5b63f3db4d74bc50e89542a6
+    icon: https://avatars.githubusercontent.com/u/39938107
+    name: mlflow-server
+    sources:
+    - https://github.com/strangiato/helm-charts/tree/main/charts/mlflow-server
+    - https://github.com/strangiato/mlflow-server
+    type: application
+    urls:
+    - https://strangiato.github.io/helm-charts/mlflow-server-0.2.2.tgz
+    version: 0.2.2
   - apiVersion: v2
     appVersion: "1.26"
     created: "2022-06-28T21:23:55.1367337Z"
@@ -103,9 +122,9 @@ entries:
   odh:
   - apiVersion: v2
     appVersion: v1.2
-    created: "2022-06-28T21:23:55.137172502Z"
+    created: "2022-07-03T01:40:36.879240231Z"
     description: A Helm chart for configuring OpenDataHub on OpenShift
-    digest: 0fa75081a79bb89cf9e405c3cc06656342e6bedc40ab2f450bdb518fdc3fdd7c
+    digest: f460f3582f79a782175999d207a9fa71a3b07f63ff2d52aca9e6248cd9898edd
     name: odh
     type: application
     urls:
@@ -184,9 +203,9 @@ entries:
   postgrescluster:
   - apiVersion: v2
     appVersion: 5.0.5
-    created: "2022-06-28T21:23:55.137639105Z"
+    created: "2022-07-03T01:40:36.880144845Z"
     description: A Helm chart for deploying Postgres using the Crunchy Operator
-    digest: 878e3ab5fccdac45c305d4debbb66e20744f1df753175d063a93b9ebf4c906e7
+    digest: 6693a2e21fbcc03f6d4673fff7b91c9e611015a7d7682050436ac72848ed75e6
     name: postgrescluster
     type: application
     urls:
@@ -195,9 +214,9 @@ entries:
   postgresql:
   - apiVersion: v2
     appVersion: "10"
-    created: "2022-06-28T21:23:55.138093207Z"
+    created: "2022-07-03T01:40:36.880583252Z"
     description: A Helm chart for deploying a basic postgres chart on OpenShift
-    digest: 351657e06be5ded2a434e479b697c122c4242661f4102ab4f3d11233ae3b8593
+    digest: 73deafe742f415ab73fa7a2e14421b5c14e3ab4bdbceee65cdaf40f683ca3f6d
     name: postgresql
     type: application
     urls:
@@ -206,10 +225,10 @@ entries:
   rgw-bucket-helper:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2022-06-28T21:23:55.138427709Z"
+    created: "2022-07-03T01:40:36.880943058Z"
     description: A Helm chart for configuring buckets using OpenShift Container Storage
       RGW
-    digest: 3a977093d127300f06004a1e3eda00a4b004d7b802533ce8f1b0f0e28831fb95
+    digest: f7b08f488bd612700de18e6fd33173bb68db7fc2712fe2db4ed227845e98e96c
     name: rgw-bucket-helper
     type: application
     urls:
@@ -229,10 +248,10 @@ entries:
   rgw-user-setup-job:
   - apiVersion: v2
     appVersion: latest
-    created: "2022-06-28T21:23:55.138764111Z"
+    created: "2022-07-03T01:40:36.881275063Z"
     description: A Helm chart for configuring an rgw user with OpenShift Container
       Storage
-    digest: c6c47ea1d2d9f55ab50d7532587ad5b700e0456515a2195e75d7d415fdf98959
+    digest: bd3b7a5e403d456538f3a781e9e614d560ccb59c1b9780ff0edcaabcf1cb6adf
     name: rgw-user-setup-job
     type: application
     urls:
@@ -260,4 +279,4 @@ entries:
     urls:
     - https://strangiato.github.io/helm-charts/rgw-user-setup-job-0.1.0.tgz
     version: 0.1.0
-generated: "2022-06-28T21:23:55.134095286Z"
+generated: "2022-07-03T01:40:36.875794076Z"
