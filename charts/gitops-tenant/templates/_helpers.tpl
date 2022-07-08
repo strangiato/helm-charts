@@ -54,6 +54,15 @@ If release name contains chart name it will be used as a full name.
 {{- end }}
 {{- end }}
 
+{{- define "gitops-tenant.pipelines-name" -}}
+{{- if .Values.pipelinesNamespace.nameOverride }}
+{{- .Values.pipelinesNamespace.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- else }}
+{{- $fullname := include "gitops-tenant.fullname" . }}
+{{- printf "%s-%s"  $fullname "pipelines"  }}
+{{- end }}
+{{- end }}
+
 {{- define "gitops-tenant.admin-group" -}}
 {{- if .Values.adminGroup.nameOverride }}
 {{- .Values.adminGroup.nameOverride | trunc 63 | trimSuffix "-" }}

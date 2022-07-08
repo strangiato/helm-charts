@@ -13,6 +13,13 @@ gitopsNamespace:
   annotations: {}
   labels: {}
   
+pipelinesNamespace:
+  create: true
+  nameOverride: ""
+  adminGroupRole: admin
+  annotations: {}
+  labels: {}
+
 devNamespace:
   create: true
   nameOverride: ""
