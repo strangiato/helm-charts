@@ -1,4 +1,4 @@
-{{- if .Values.devNamespace.create -}}
+{{- if .Values.adminGroup.create -}}
 apiVersion: user.openshift.io/v1
 kind: Group
 metadata:

@@ -36,6 +36,24 @@ If release name contains chart name it will be used as a full name.
 {{- end }}
 {{- end }}
 
+{{- define "gitops-tenant.test-name" -}}
+{{- if .Values.testNamespace.nameOverride }}
+{{- .Values.testNamespace.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- else }}
+{{- $fullname := include "gitops-tenant.fullname" . }}
+{{- printf "%s-%s"  $fullname "test"  }}
+{{- end }}
+{{- end }}
+
+{{- define "gitops-tenant.prod-name" -}}
+{{- if .Values.prodNamespace.nameOverride }}
+{{- .Values.prodNamespace.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- else }}
+{{- $fullname := include "gitops-tenant.fullname" . }}
+{{- printf "%s-%s"  $fullname "prod"  }}
+{{- end }}
+{{- end }}
+
 {{- define "gitops-tenant.admin-group" -}}
 {{- if .Values.adminGroup.nameOverride }}
 {{- .Values.adminGroup.nameOverride | trunc 63 | trimSuffix "-" }}
