@@ -39,6 +39,8 @@ dependencies:
 
 ## Requirements
 
+Kubernetes: `>= 1.21.0`
+
 | Repository | Name | Version |
 |------------|------|---------|
 | https://strangiato.github.io/helm-charts/ | postgrescluster | 0.2.2 |

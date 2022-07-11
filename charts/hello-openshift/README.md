@@ -4,6 +4,10 @@
 
 A helm chart for generating a deployment using Openshift built in hello-openshift image
 
+## Requirements
+
+Kubernetes: `>= 1.19.0`
+
 ## Values
 
 | Key | Type | Default | Description |

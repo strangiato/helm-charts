@@ -32,6 +32,10 @@ dependencies:
     repository: "https://strangiato.github.io/helm-charts/"
 ```
 
+## Requirements
+
+Kubernetes: `>= 1.19.0`
+
 ## Values
 
 | Key | Type | Default | Description |
