@@ -1,6 +1,7 @@
 nameOverride: ""
 fullnameOverride: ""
 
+# -- (array)
 repos: {} 
   # - name: private-repo-example
   #   type: git
