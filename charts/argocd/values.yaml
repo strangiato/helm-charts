@@ -1,8 +1,8 @@
 nameOverride: ""
 fullnameOverride: ""
 
-# -- (array)
-repos: {} 
+# -- (array/object)
+repos: []
   # - name: private-repo-example
   #   type: git
   #   url: https://github.com/private/repo.git
