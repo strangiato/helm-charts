@@ -1,0 +1,9 @@
+{{- range $project := .Values.projects }}
+kind: AppProject
+apiVersion: argoproj.io/v1alpha1
+metadata:
+  name: {{ $project.name }}
+  labels:
+    {{- include "argocd.labels" $ | nindent 4 }}
+spec: {}
+{{- end }}

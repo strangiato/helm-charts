@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ArgoCD
+metadata:
+  name: {{ include "argocd.fullname" . }}
+  labels:
+    {{- include "argocd.labels" . | nindent 4 }}
+spec:
+  controller:
+    resources:
+      {{- toYaml .Values.argocd.controller.resources | nindent 6 }}
+  dex:
+    resources:
+      {{- toYaml .Values.argocd.dex.resources | nindent 6 }}
+    openShiftOAuth: {{ .Values.argocd.dex.openShiftOAuth }}
+  ha:
+    resources:
+      {{- toYaml .Values.argocd.ha.resources | nindent 6 }}
+    enabled: {{ .Values.argocd.ha.enabled }}
+  rbac:
+    defaultPolicy: ''
+    policy: |-
+      {{ .Values.argocd.rbac.policy | indent 6 | trim }}
+    scopes: {{ .Values.argocd.rbac.scopes | quote }}
+  redis:
+    resources:
+      {{- toYaml .Values.argocd.redis.resources | nindent 6 }}
+  repo:
+    resources:
+      {{- toYaml .Values.argocd.repo.resources | nindent 6 }}
+  server:
+    resources:
+      {{- toYaml .Values.argocd.server.resources | nindent 6 }}
+    route:
+      enabled: {{ .Values.argocd.server.route.enabled }}
