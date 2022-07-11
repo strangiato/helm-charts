@@ -1,8 +1,8 @@
 apiVersion: v2
 name: hello-openshift
 description: A helm chart for generating a deployment using Openshift built in hello-openshift image
-
 type: application
+kubeVersion: ">= 1.19.0"
 
 version: 0.1.0
 

@@ -2,6 +2,8 @@ apiVersion: v2
 name: mlflow-server
 description: A Helm chart for deploying mlflow on OpenShift
 type: application
+kubeVersion: ">= 1.21.0"
+
 sources: 
   - https://github.com/strangiato/helm-charts/tree/main/charts/mlflow-server
   - https://github.com/strangiato/mlflow-server

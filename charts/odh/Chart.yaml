@@ -2,6 +2,7 @@ apiVersion: v2
 name: odh
 description: A Helm chart for configuring OpenDataHub on OpenShift
 type: application
+kubeVersion: ">= 1.19.0"
 
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
