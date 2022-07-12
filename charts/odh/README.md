@@ -2,7 +2,7 @@
 
 A Helm chart for configuring OpenDataHub on OpenShift
 
-![Version: 0.2.2](https://img.shields.io/badge/Version-0.2.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.2](https://img.shields.io/badge/AppVersion-v1.2-informational?style=flat-square)
+![Version: 0.3.0](https://img.shields.io/badge/Version-0.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.2](https://img.shields.io/badge/AppVersion-v1.2-informational?style=flat-square)
 
 ## Installing the Chart
 
@@ -28,7 +28,7 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: "odh"
-    version: "0.2.2"
+    version: "0.3.0"
     repository: "https://strangiato.github.io/helm-charts/"
 ```
 
@@ -46,7 +46,7 @@ Kubernetes: `>= 1.19.0`
 | argoWorkflows.operator.enabled | bool | `false` | Enable install of the Argo Workflows Operator |
 | grafana.instance.enabled | bool | `false` | Enable install of a Grafana instance |
 | grafana.operator.enabled | bool | `false` | Enable install of the Grafana Operator |
-| jupyterHub.additionalNotebooks.enabled | bool | `true` | Enable the install of additional Jupyter Notebook images |
+| jupyterHub.additionalNotebooks | list | `["additional"]` | Enable the install of additional Jupyter Notebook images via overlays |
 | jupyterHub.enabled | bool | `true` | Enable the install of a JupyterHub instance |
 | jupyterHub.singleUserProfile.enabled | bool | `false` | Enable the configuration of a singleUserProfile for JupyterHub |
 | kafka.instance.enabled | bool | `false` | Enable install of a Kafka instance |
