@@ -91,10 +91,10 @@ spec:
           name: manifests
           path: jupyterhub/jupyterhub
       name: jupyterhub
-    {{- if .Values.jupyterHub.additionalNotebooks.enabled }}
+    {{- if .Values.jupyterHub.additionalNotebooks }}
     - kustomizeConfig:
         overlays:
-          - additional
+          {{- toYaml .Values.jupyterHub.additionalNotebooks | nindent 10 }}
         repoRef:
           name: manifests
           path: jupyterhub/notebook-images

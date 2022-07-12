@@ -42,9 +42,10 @@ spark:
 jupyterHub: 
   # -- Enable the install of a JupyterHub instance
   enabled: true
+  # -- Enable the install of additional Jupyter Notebook images via overlays
   additionalNotebooks:
-    # -- Enable the install of additional Jupyter Notebook images
-    enabled: true
+    - additional
+    # - gpu
   singleUserProfile: 
     # -- Enable the configuration of a singleUserProfile for JupyterHub
     enabled: false
