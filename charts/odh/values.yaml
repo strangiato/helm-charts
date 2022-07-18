@@ -42,10 +42,16 @@ spark:
 jupyterHub: 
   # -- Enable the install of a JupyterHub instance
   enabled: true
+  
+  idleCuller: 
+    # -- Enable the jupyterhub-idle-culler
+    enabled: false
+  
   # -- Enable the install of additional Jupyter Notebook images via overlays
   additionalNotebooks:
     - additional
     # - cuda
+  
   singleUserProfile: 
     # -- Enable the configuration of a singleUserProfile for JupyterHub
     enabled: false

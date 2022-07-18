@@ -84,6 +84,10 @@ spec:
     {{- end }}
     {{- if .Values.jupyterHub.enabled }}
     - kustomizeConfig:
+        {{- if .Values.jupyterHub.idleCuller.enabled }}
+        overlays:
+          - jupyterhub-idle-culler
+        {{- end }}
         parameters:
           - name: s3_endpoint_url
             value: s3.odh.com
