@@ -131,6 +131,8 @@ spec:
     {{- end }}
     {{- if .Values.modelMesh.enabled }}
     - kustomizeConfig:
+      overlays:
+        - authentication
       repoRef:
         name: manifests
         path: model-mesh

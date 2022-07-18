@@ -45,7 +45,7 @@ jupyterHub:
   # -- Enable the install of additional Jupyter Notebook images via overlays
   additionalNotebooks:
     - additional
-    # - cuda
+    # - cuda-11.0.3
   singleUserProfile: 
     # -- Enable the configuration of a singleUserProfile for JupyterHub
     enabled: false
