@@ -21,7 +21,11 @@ spec:
     name: {{ include "mlflow-server.fullname" . }}
     weight: 100
   port:
+    {{- if .Values.openshiftOauth.enabled }}
+    targetPort: oauth
+    {{- else }}
     targetPort: http
+    {{- end }}
   {{- if .Values.route.tls.enabled }}
   tls:
     termination: {{ .Values.route.tls.termination }}
