@@ -128,6 +128,7 @@ spec:
           args:
             - --https-address=:8443
             - --provider=openshift
+            - --openshift-sar={"namespace":"{{ .Release.Namespace }}","resource":"services","resourceName":"{{ include "mlflow-server.fullname" . }}","verb":"get"}
             - --openshift-service-account={{ include "mlflow-server.serviceAccountName" . }}
             - --upstream=http://localhost:8080
             - --tls-cert=/etc/tls/private/tls.crt
