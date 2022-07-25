@@ -12,9 +12,9 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: http
+      targetPort: mlflow-server
       protocol: TCP
-      name: http
+      name: mlflow-server
     {{- if .Values.openshiftOauth.enabled }}
     - port: 8443
       targetPort: oauth-proxy

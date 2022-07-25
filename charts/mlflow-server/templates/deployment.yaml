@@ -36,17 +36,17 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
-            - name: http
+            - name: mlflow-server
               containerPort: 8080
               protocol: TCP
           livenessProbe:
             httpGet:
               path: /health
-              port: http
+              port: mlflow-server
           readinessProbe:
             httpGet:
               path: /health
-              port: http
+              port: mlflow-server
           env:
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
@@ -124,11 +124,11 @@ spec:
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8443
-              name: oauth
+              name: oauth-proxy
           args:
             - --https-address=:8443
             - --provider=openshift
-            - --openshift-service-account=proxy
+            - --openshift-service-account={{ include "mlflow-server.serviceAccountName" . }}
             - --upstream=http://localhost:8080
             - --tls-cert=/etc/tls/private/tls.crt
             - --tls-key=/etc/tls/private/tls.key
