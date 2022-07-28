@@ -2,7 +2,7 @@
 
 A Helm chart for configuring OpenDataHub on OpenShift
 
-![Version: 0.3.0](https://img.shields.io/badge/Version-0.3.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.2](https://img.shields.io/badge/AppVersion-v1.2-informational?style=flat-square)
+![Version: 0.3.1](https://img.shields.io/badge/Version-0.3.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.2](https://img.shields.io/badge/AppVersion-v1.2-informational?style=flat-square)
 
 ## Installing the Chart
 
@@ -28,7 +28,7 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: "odh"
-    version: "0.3.0"
+    version: "0.3.1"
     repository: "https://strangiato.github.io/helm-charts/"
 ```
 
@@ -56,7 +56,7 @@ Kubernetes: `>= 1.19.0`
 | odhDashboard.enabled | bool | `true` | Enable install of the ODH Dashboard instance |
 | prometheus.instance.enabled | bool | `false` |  |
 | prometheus.operator.enabled | bool | `false` | Enable install of the Prometheus Operator |
-| repos.kfManifestsUrl | string | `"https://github.com/opendatahub-io/manifests/tarball/v1.4.0-rc.2-openshift"` | KubeFlow manifest URL |
+| repos.kfManifestsUrl | string | `"https://github.com/opendatahub-io/manifests/tarball/v1.5-branch-openshift"` | KubeFlow manifest URL |
 | repos.manifestsUrl | string | `"https://github.com/opendatahub-io/odh-manifests/tarball/"` | ODH Manifests URL base |
 | repos.manifestsVersion | string | Chart appVersion | Used to overwrite teh manifestsURL version from the chart appVersion |
 | seldon.operator.enabled | bool | `false` | Enable install of Seldon Operator |
