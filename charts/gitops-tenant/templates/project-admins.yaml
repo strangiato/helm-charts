@@ -5,8 +5,6 @@ metadata:
   name: {{ include "gitops-tenant.admin-group" . }}
   labels:
     {{- include "gitops-tenant.labels" . | nindent 4 }}
-{{- with .Values.adminGroup.members }}
 users:
-  {{- toYaml . | nindent 2 }}
-{{- end }}
+  {{- toYaml .Values.adminGroup.members | nindent 2 }}
 {{- end }}

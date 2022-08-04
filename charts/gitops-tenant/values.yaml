@@ -30,14 +30,14 @@ devNamespace:
 testNamespace:
   create: true
   nameOverride: ""
-  adminGroupRole: viewer
+  adminGroupRole: view
   annotations: {}
   labels: {}
 
 prodNamespace:
   create: true
   nameOverride: ""
-  adminGroupRole: viewer
+  adminGroupRole: view
   annotations: {}
   labels: {}
 
