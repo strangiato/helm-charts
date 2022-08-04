@@ -10,7 +10,7 @@ repos: []
   #   password: password
 
 projects:
-  - name: Default
+  - name: default
 
 argocd:
   rbac: 
