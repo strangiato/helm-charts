@@ -71,7 +71,7 @@ Kubernetes: `>= 1.19.0`
 | argocd.server.route.enabled | bool | `true` |  |
 | fullnameOverride | string | `""` |  |
 | nameOverride | string | `""` |  |
-| projects[0].name | string | `"Default"` |  |
+| projects[0].name | string | `"default"` |  |
 | repos | array/object | `[]` |  |
 
 ----------------------------------------------
