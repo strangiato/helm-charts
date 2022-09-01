@@ -48,7 +48,7 @@ spec:
               path: /health
               port: http
           env:
-            {{ if .Values.objectBucketClaim.enabled }}
+            {{ if .Values.objectStorage.objectBucketClaim.enabled }}
             - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
@@ -69,16 +69,25 @@ spec:
                 configMapKeyRef:
                   name: {{ include "mlflow-server.fullname" . }}
                   key: BUCKET_PORT
-            - name: MLFLOW_S3_ENDPOINT_URL
-              value: 'https://$(BUCKET_HOST):$(BUCKET_PORT)'
             - name: MLFLOW_S3_BUCKET_NAME
               valueFrom:
                 configMapKeyRef:
                   name: {{ include "mlflow-server.fullname" . }}
                   key: BUCKET_NAME
+            - name: MLFLOW_S3_ENDPOINT_URL
+              value: 'https://$(BUCKET_HOST):$(BUCKET_PORT)'
+            {{ else  }}
+            - name: AWS_ACCESS_KEY_ID
+              value: {{ .Values.objectStorage.S3AccessKeyId }}
+            - name: AWS_SECRET_ACCESS_KEY
+              value: {{ .Values.objectStorage.S3SecretAccessKey }}
+            - name: MLFLOW_S3_BUCKET_NAME
+              value: {{ .Values.objectStorage.MlflowBucketName }}
+            - name: MLFLOW_S3_ENDPOINT_URL
+              value: {{ .Values.objectStorage.S3EndpointUrl }}
+            {{ end }}
             - name: AWS_CA_BUNDLE
               value: /run/secrets/kubernetes.io/serviceaccount/service-ca.crt
-            {{ end }}
             {{ if .Values.crunchyPostgres.enabled }}
             - name: PGBOUNCE_HOST
               valueFrom:

@@ -56,15 +56,22 @@ securityContext: {}
   # runAsNonRoot: true
   # runAsUser: 1000
 
-objectBucketClaim:
-  # -- Enable creation of s3 bucket with objectBucketClaim for artifact storage
-  enabled: true
-  # -- StorageClassName for creation of the objectBucketClaim
-  storageClassName: openshift-storage.noobaa.io
-  # -- BucketClass name for the creation of the objectBucketClaim
-  bucketclass: noobaa-default-bucket-class
-  # -- Additional custom annotations for the objectBucketClaim
-  annotations: {}
+objectStorage:
+  objectBucketClaim:
+    # -- Enable creation of s3 bucket with objectBucketClaim for artifact storage
+    enabled: true
+    # -- StorageClassName for creation of the objectBucketClaim
+    storageClassName: openshift-storage.noobaa.io
+    # -- BucketClass name for the creation of the objectBucketClaim
+    bucketclass: noobaa-default-bucket-class
+    # -- Additional custom annotations for the objectBucketClaim
+    annotations: {}
+  # -- Set endpoint URL, bucket name and credentials if objectBucketClaim is disabled
+  # -- If objectBucketClaim is enabled, these values are overriden
+  S3EndpointUrl: {}
+  MlflowBucketName: {}
+  S3AccessKeyId: {}
+  S3SecretAccessKey: {}
 
 crunchyPostgres:
   # -- Enable creation of a postgres instance using crunchyPostgres operator
