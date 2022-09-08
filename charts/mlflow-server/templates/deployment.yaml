@@ -128,8 +128,11 @@ spec:
           args:
             - --https-address=:8443
             - --provider=openshift
+            {{- if .Values.openshiftOauth.enableBearerTokenAccess }}
             - '--openshift-delegate-urls={"/": {"resource": "service", "verb": "get", "name": "{{ include "mlflow-server.fullname" . }}"}}'
-            # - --openshift-sar={"namespace":"{{ .Release.Namespace }}","resource":"services","resourceName":"{{ include "mlflow-server.fullname" . }}","verb":"get"}
+            {{- else }}
+            - --openshift-sar={"namespace":"{{ .Release.Namespace }}","resource":"services","resourceName":"{{ include "mlflow-server.fullname" . }}","verb":"get"}
+            {{- end }}
             - --openshift-service-account={{ include "mlflow-server.serviceAccountName" . }}
             - --upstream=http://localhost:8080
             - --tls-cert=/etc/tls/private/tls.crt

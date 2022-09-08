@@ -1,4 +1,4 @@
-{{- if .Values.openshiftOauth.enabled }}
+{{- if and (.Values.openshiftOauth.enabled) (.Values.openshiftOauth.enableBearerTokenAccess ) }}
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
