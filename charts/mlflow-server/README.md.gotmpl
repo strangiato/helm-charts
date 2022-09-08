@@ -37,4 +37,21 @@ dependencies:
 
 {{ template "chart.valuesSection" . }}
 
+## Usage
+
+## Utilizing MLFlow from Outside the Cluster with OAuth
+
+When utilizing MLFlow from outside of the cluster when OpenShift OAuth is enabled you will need to provide a Bearer token.  To set the Bearer token for MLFlow set the following Environment Variable from the environment you are executing training from:
+
+```
+MLFLOW_TRACKING_TOKEN
+```
+
+To retreive your token from openshift run the following command:
+
+```sh
+oc whoami --show-token
+```
+
+
 {{ template "helm-docs.versionFooter" . }}
