@@ -78,13 +78,13 @@ spec:
               value: 'https://$(BUCKET_HOST):$(BUCKET_PORT)'
             {{ else  }}
             - name: AWS_ACCESS_KEY_ID
-              value: {{ .Values.objectStorage.S3AccessKeyId }}
+              value: {{ .Values.objectStorage.s3AccessKeyId }}
             - name: AWS_SECRET_ACCESS_KEY
-              value: {{ .Values.objectStorage.S3SecretAccessKey }}
+              value: {{ .Values.objectStorage.s3SecretAccessKey }}
             - name: MLFLOW_S3_BUCKET_NAME
-              value: {{ .Values.objectStorage.MlflowBucketName }}
+              value: {{ .Values.objectStorage.mlflowBucketName }}
             - name: MLFLOW_S3_ENDPOINT_URL
-              value: {{ .Values.objectStorage.S3EndpointUrl }}
+              value: {{ .Values.objectStorage.s3EndpointUrl }}
             {{ end }}
             - name: AWS_CA_BUNDLE
               value: /run/secrets/kubernetes.io/serviceaccount/service-ca.crt
