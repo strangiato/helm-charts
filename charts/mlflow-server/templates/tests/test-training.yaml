@@ -16,7 +16,7 @@ spec:
           value: 'http://{{ include "mlflow-server.fullname" . }}:{{ .Values.service.port }}'
         - name: MLFLOW_EXPERIMENT
           value: helm-test
-        # {{ if .Values.objectBucketClaim.enabled }}
+        # {{ if .Values.objectStorage.objectBucketClaim.enabled }}
         # - name: AWS_ACCESS_KEY_ID
         #   valueFrom:
         #     secretKeyRef:

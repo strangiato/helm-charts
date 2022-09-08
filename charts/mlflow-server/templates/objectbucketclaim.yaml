@@ -1,11 +1,11 @@
-{{- if .Values.objectBucketClaim.enabled -}}
+{{- if .Values.objectStorage.objectBucketClaim.enabled -}}
 apiVersion: objectbucket.io/v1alpha1
 kind: ObjectBucketClaim
 metadata:
   name: {{ include "mlflow-server.fullname" . }}
   labels:
     {{- include "mlflow-server.labels" . | nindent 4 }}
-  {{- with .Values.objectBucketClaim.annotations }}
+  {{- with .Values.objectStorage.objectBucketClaim.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
   {{- end }}
@@ -13,5 +13,5 @@ spec:
   additionalConfig:
     bucketclass: noobaa-default-bucket-class
   generateBucketName: {{ include "mlflow-server.fullname" . }}
-  storageClassName: {{ .Values.objectBucketClaim.storageClassName }}
+  storageClassName: {{ .Values.objectStorage.objectBucketClaim.storageClassName }}
 {{- end }}
