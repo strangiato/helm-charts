@@ -68,10 +68,10 @@ objectStorage:
     annotations: {}
   # -- Set endpoint URL, bucket name and credentials if objectBucketClaim is disabled
   # -- If objectBucketClaim is enabled, these values are overriden
-  S3EndpointUrl: {}
-  MlflowBucketName: {}
-  S3AccessKeyId: {}
-  S3SecretAccessKey: {}
+  s3EndpointUrl: {}
+  mlflowBucketName: {}
+  s3AccessKeyId: {}
+  s3SecretAccessKey: {}
 
 crunchyPostgres:
   # -- Enable creation of a postgres instance using crunchyPostgres operator
