@@ -101,6 +101,9 @@ ingress:
 openshiftOauth: 
   # -- Secures MLFlow with OpenShift Oauth, this option requires cluster admin
   enabled: true
+  # -- Enable access to MLFlow using an OpenShift Bearer Token.  This feature enables users from outside of the cluster to read/write to MLFlow using the API.  
+  # Warning: This feature requires cluster admin to install.
+  enableBearerTokenAccess: false
   resources: {}
     # We usually recommend not to specify default resources and to leave this as a conscious
     # choice for the user. This also increases chances charts run on environments with little
