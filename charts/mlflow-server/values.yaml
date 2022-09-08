@@ -99,7 +99,7 @@ ingress:
   #      - chart-example.local
 
 openshiftOauth: 
-  # - Enable OpenShift Oauth
+  # -- Secures MLFlow with OpenShift Oauth, this option requires cluster admin
   enabled: true
   resources: {}
     # We usually recommend not to specify default resources and to leave this as a conscious
