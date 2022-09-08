@@ -24,7 +24,7 @@ spec:
     {{- if .Values.openshiftOauth.enabled }}
     targetPort: oauth
     {{- else }}
-    targetPort: http
+    targetPort: mlflow-server
     {{- end }}
   {{- if .Values.route.tls.enabled }}
   tls:
