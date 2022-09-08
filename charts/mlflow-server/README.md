@@ -67,10 +67,14 @@ Kubernetes: `>= 1.21.0`
 | ingress.tls | list | `[]` |  |
 | nameOverride | string | `""` | String to partially override fullname template (will maintain the release name) |
 | nodeSelector | object | `{}` | Node selector for the MlFlow Server pod |
-| objectBucketClaim.annotations | object | `{}` | Additional custom annotations for the objectBucketClaim |
-| objectBucketClaim.bucketclass | string | `"noobaa-default-bucket-class"` | BucketClass name for the creation of the objectBucketClaim |
-| objectBucketClaim.enabled | bool | `true` | Enable creation of s3 bucket with objectBucketClaim for artifact storage |
-| objectBucketClaim.storageClassName | string | `"openshift-storage.noobaa.io"` | StorageClassName for creation of the objectBucketClaim |
+| objectStorage.mlflowBucketName | string | `"mlflow"` | Name of the s3 bucket if the objectBucketClaim is disabled |
+| objectStorage.objectBucketClaim.annotations | object | `{}` | Additional custom annotations for the objectBucketClaim |
+| objectStorage.objectBucketClaim.bucketclass | string | `"noobaa-default-bucket-class"` | BucketClass name for the creation of the objectBucketClaim |
+| objectStorage.objectBucketClaim.enabled | bool | `true` | Enable creation of s3 bucket with objectBucketClaim for artifact storage |
+| objectStorage.objectBucketClaim.storageClassName | string | `"openshift-storage.noobaa.io"` | StorageClassName for creation of the objectBucketClaim |
+| objectStorage.s3AccessKeyId | string | `""` | S3 Access Key ID if the objectBucketClaim is disabled |
+| objectStorage.s3EndpointUrl | string | `""` | URL for s3 endpoint if the objectBucketClaim is disabled |
+| objectStorage.s3SecretAccessKey | string | `""` | S3 Secret Access Key if the objectBucketClaim is disabled |
 | podAnnotations | object | `{}` | Map of annotations to add to the pods |
 | podSecurityContext | object | `{}` |  |
 | replicaCount | int | `1` | replicas of MLFlow Server |
