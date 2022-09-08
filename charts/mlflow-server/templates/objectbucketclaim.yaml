@@ -13,5 +13,5 @@ spec:
   additionalConfig:
     bucketclass: noobaa-default-bucket-class
   generateBucketName: {{ include "mlflow-server.fullname" . }}
-  storageClassName: {{ .Values.objectBucketClaim.objectStorage.storageClassName }}
+  storageClassName: {{ .Values.objectStorage.objectBucketClaim.storageClassName }}
 {{- end }}
