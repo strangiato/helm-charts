@@ -12,6 +12,7 @@
         "nameOverride",
         "nodeSelector",
         "objectStorage",
+        "openshiftOauth",
         "podAnnotations",
         "podSecurityContext",
         "replicaCount",
@@ -133,23 +134,14 @@
         "objectStorage": {
             "type": "object",
             "required": [
-                "s3EndpointUrl",
                 "mlflowBucketName",
+                "objectBucketClaim",
                 "s3AccessKeyId",
-                "s3SecretAccessKey",
-                "objectBucketClaim"
+                "s3EndpointUrl",
+                "s3SecretAccessKey"
             ],
             "properties": {
-                "s3EndpointUrl": {
-                    "type": "string"
-                },
                 "mlflowBucketName": {
-                    "type": "string"
-                },
-                "s3AccessKeyId": {
-                    "type": "string"
-                },
-                "s3SecretAccessKey": {
                     "type": "string"
                 },
                 "objectBucketClaim": {
@@ -176,6 +168,15 @@
                             "pattern": "^[a-z0-9-_.]+$"
                         }
                     }
+                },
+                "s3AccessKeyId": {
+                    "type": "string"
+                },
+                "s3EndpointUrl": {
+                    "type": "string"
+                },
+                "s3SecretAccessKey": {
+                    "type": "string"
                 }
             }
         },
