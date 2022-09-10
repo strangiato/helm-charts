@@ -180,6 +180,49 @@
                 }
             }
         },
+        "openshiftOauth": {
+            "type": "object",
+            "required": [
+                "enabled",
+                "enableBearerTokenAccess",
+                "resources"
+            ],
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "enableBearerTokenAccess": {
+                    "type": "boolean"
+                },
+                "resources": {
+                    "type": "object",
+                    "properties": {
+                        "limits": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": "string"
+                                },
+                                "memory": {
+                                    "type": "string"
+                                }
+                            }
+                        },
+                        "requests": {
+                            "type": "object",
+                            "properties": {
+                                "cpu": {
+                                    "type": "string"
+                                },
+                                "memory": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "podAnnotations": {
             "type": "object"
         },
