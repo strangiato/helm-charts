@@ -1,5 +1,13 @@
+# -- String to partially override fullname template (will maintain the release name)
+nameOverride: ""
+# -- String to fully override fullname template
+fullnameOverride: ""
+
 # -- replicas of MLFlow Server
 replicaCount: 1
+
+# -- The image pull secret for the image repository
+imagePullSecrets: []
 
 image:
   # -- The image repository to use
@@ -10,23 +18,6 @@ image:
   # -- The image tag to use
   # @default -- Chart appVersion
   tag: ""
-
-trainingTestImage:
-  # -- The image repository used for the helm training test
-  repository: quay.io/troyer/mlflow-server-training-test
-  # -- The docker image pull policy
-  pullPolicy: IfNotPresent
-  # Overrides the image tag whose default is the chart appVersion.
-  # -- The image tag to use
-  # @default -- Chart appVersion
-  tag: "latest"
-
-# -- The image pull secret for the image repository
-imagePullSecrets: []
-# -- String to partially override fullname template (will maintain the release name)
-nameOverride: ""
-# -- String to fully override fullname template
-fullnameOverride: ""
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -163,3 +154,13 @@ tolerations: []
 
 # -- Affinity configuration for the MLFlow Server pod
 affinity: {}
+
+trainingTestImage:
+  # -- The image repository used for the helm training test
+  repository: quay.io/troyer/mlflow-server-training-test
+  # -- The docker image pull policy
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  # -- The image tag to use
+  # @default -- Chart appVersion
+  tag: "latest"
