@@ -11,7 +11,7 @@
         "ingress",
         "nameOverride",
         "nodeSelector",
-        "objectBucketClaim",
+        "objectStorage",
         "podAnnotations",
         "podSecurityContext",
         "replicaCount",
@@ -130,28 +130,52 @@
         "nodeSelector": {
             "type": "object"
         },
-        "objectBucketClaim": {
+        "objectStorage": {
             "type": "object",
             "required": [
-                "annotations",
-                "bucketclass",
-                "enabled",
-                "storageClassName"
+                "s3EndpointUrl",
+                "mlflowBucketName",
+                "s3AccessKeyId",
+                "s3SecretAccessKey",
+                "objectBucketClaim"
             ],
             "properties": {
-                "annotations": {
-                    "type": "object"
+                "s3EndpointUrl": {
+                    "type": "string"
                 },
-                "bucketclass": {
-                    "type": "string",
-                    "pattern": "^[a-z0-9-_]+$"
+                "mlflowBucketName": {
+                    "type": "string"
                 },
-                "enabled": {
-                    "type": "boolean"
+                "s3AccessKeyId": {
+                    "type": "string"
                 },
-                "storageClassName": {
-                    "type": "string",
-                    "pattern": "^[a-z0-9-_.]+$"
+                "s3SecretAccessKey": {
+                    "type": "string"
+                },
+                "objectBucketClaim": {
+                    "type": "object",
+                    "required": [
+                        "annotations",
+                        "bucketclass",
+                        "enabled",
+                        "storageClassName"
+                    ],
+                    "properties": {
+                        "annotations": {
+                            "type": "object"
+                        },
+                        "bucketclass": {
+                            "type": "string",
+                            "pattern": "^[a-z0-9-_]+$"
+                        },
+                        "enabled": {
+                            "type": "boolean"
+                        },
+                        "storageClassName": {
+                            "type": "string",
+                            "pattern": "^[a-z0-9-_.]+$"
+                        }
+                    }
                 }
             }
         },
@@ -251,7 +275,7 @@
                 },
                 "type": {
                     "type": "string",
-                    "pattern": "^(ClusterIP|NodePort:|LoadBalancer|ExternalName)$"
+                    "pattern": "^(ClusterIP|NodePort|LoadBalancer|ExternalName)$"
                 }
             }
         },
