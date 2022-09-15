@@ -11,6 +11,10 @@ repos: []
 
 projects:
   - name: default
+    # destinations:
+    #   - server: https://kubernetes.default.svc
+    #     name: in-cluster
+    #     namespace: target-namespace
 
 server:
   autoscale:
