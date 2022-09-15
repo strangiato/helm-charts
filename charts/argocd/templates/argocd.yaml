@@ -5,30 +5,89 @@ metadata:
   labels:
     {{- include "argocd.labels" . | nindent 4 }}
 spec:
-  controller:
+  server:
+    {{- with .Values.server }}
+    autoscale:
+      enabled: {{ .autoscale.enabled }}
+    grcp:
+      ingress:
+        enabled: {{ .grcp.ingress.enabled }}
+    ingress:
+      enabled: {{ .ingress.enabled }}
     resources:
-      {{- toYaml .Values.argocd.controller.resources | nindent 6 }}
-  dex:
-    resources:
-      {{- toYaml .Values.argocd.dex.resources | nindent 6 }}
-    openShiftOAuth: {{ .Values.argocd.dex.openShiftOAuth }}
-  ha:
-    resources:
-      {{- toYaml .Values.argocd.ha.resources | nindent 6 }}
-    enabled: {{ .Values.argocd.ha.enabled }}
+      {{- toYaml .resources | nindent 6 }}
+    route:
+      enabled: {{ .route.enabled }}
+    service:
+      type: ''
+    {{- end }}
+  grafana:
+    {{- with .Values.grafana }}
+    enabled: {{ .enabled }}
+    ingress:
+      enabled: {{ .ingress.enabled }}
+    route:
+      enabled: {{ .route.enabled }}
+    {{- end }}
+  notifications:
+    {{- with .Values.notifications }}
+    enabled: {{ .enabled }}
+    {{- end }}
+  prometheus:
+    {{- with .Values.prometheus }}
+    enabled: {{ .enabled }}
+    ingress:
+      enabled: {{ .ingress.enabled }}
+    route:
+      enabled: {{ .route.enabled }}
+    {{- end}}
+  sso:
+    {{- with .Values.sso }}
+    provider: {{ .provider }}
+    {{- if eq .provider "dex" }}
+    dex:
+      openShiftOAuth: {{ .dex.openshiftOAuth }}
+      resources:
+        {{- toYaml .dex.resources | nindent 8 }}
+    {{- end }}
+    {{- end }}
   rbac:
+    {{- with .Values.rbac }}
     defaultPolicy: ''
     policy: |-
-      {{ .Values.argocd.rbac.policy | indent 6 | trim }}
-    scopes: {{ .Values.argocd.rbac.scopes | quote }}
-  redis:
-    resources:
-      {{- toYaml .Values.argocd.redis.resources | nindent 6 }}
+      {{ .policy | indent 6 | trim }}
+    scopes: {{ .scopes | quote }}
+    {{- end }}
   repo:
+    {{- with .Values.repo }}
+    resouces:
+      {{- toYaml .resources | nindent 6 }}
+    {{- end }}
+  resourceExclusions: |
+    - apiGroups:
+      - tekton.dev
+      clusters:
+      - '*'
+      kinds:
+      - TaskRun
+      - PipelineRun
+  ha:
+    {{- with .Values.ha }}
+    enabled: {{ .enabled }}
     resources:
-      {{- toYaml .Values.argocd.repo.resources | nindent 6 }}
-  server:
+      {{- toYaml .resources | nindent 6 }}
+    {{- end }}
+  tls:
+    ca: {}
+  redis:
+    {{- with .Values.redis }}
     resources:
-      {{- toYaml .Values.argocd.server.resources | nindent 6 }}
-    route:
-      enabled: {{ .Values.argocd.server.route.enabled }}
+      {{- toYaml .resources | nindent 6 }}
+    {{- end }}
+  controller:
+    {{- with .Values.controller }}
+    processor: {}
+    sharding: {}
+    resources:
+      {{- toYaml .resources | nindent 6 }}
+    {{- end }}
