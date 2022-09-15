@@ -2,7 +2,7 @@
 
 A Helm chart for Kubernetes
 
-![Version: 0.1.1](https://img.shields.io/badge/Version-0.1.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.16.0](https://img.shields.io/badge/AppVersion-1.16.0-informational?style=flat-square)
+![Version: 0.2.0](https://img.shields.io/badge/Version-0.2.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.6](https://img.shields.io/badge/AppVersion-1.6-informational?style=flat-square)
 
 ## Installing the Chart
 
@@ -28,7 +28,7 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: "argocd"
-    version: "0.1.1"
+    version: "0.2.0"
     repository: "https://strangiato.github.io/helm-charts/"
 ```
 
@@ -40,39 +40,51 @@ Kubernetes: `>= 1.19.0`
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
-| argocd.controller.resources.limits.cpu | string | `"2000m"` |  |
-| argocd.controller.resources.limits.memory | string | `"2048Mi"` |  |
-| argocd.controller.resources.requests.cpu | string | `"250m"` |  |
-| argocd.controller.resources.requests.memory | string | `"1024Mi"` |  |
-| argocd.dex.openShiftOAuth | bool | `true` |  |
-| argocd.dex.resources.limits.cpu | string | `"500m"` |  |
-| argocd.dex.resources.limits.memory | string | `"256Mi"` |  |
-| argocd.dex.resources.requests.cpu | string | `"250m"` |  |
-| argocd.dex.resources.requests.memory | string | `"128Mi"` |  |
-| argocd.ha.enabled | bool | `false` |  |
-| argocd.ha.resources.limits.cpu | string | `"500m"` |  |
-| argocd.ha.resources.limits.memory | string | `"256Mi"` |  |
-| argocd.ha.resources.requests.cpu | string | `"250m"` |  |
-| argocd.ha.resources.requests.memory | string | `"128Mi"` |  |
-| argocd.rbac.policy | string | `"g, system:cluster-admins, role:admin"` |  |
-| argocd.rbac.scopes | string | `"[groups]"` |  |
-| argocd.redis.resources.limits.cpu | string | `"500m"` |  |
-| argocd.redis.resources.limits.memory | string | `"256Mi"` |  |
-| argocd.redis.resources.requests.cpu | string | `"250m"` |  |
-| argocd.redis.resources.requests.memory | string | `"128Mi"` |  |
-| argocd.repo.resources.limits.cpu | string | `"1000m"` |  |
-| argocd.repo.resources.limits.memory | string | `"1024Mi"` |  |
-| argocd.repo.resources.requests.cpu | string | `"250m"` |  |
-| argocd.repo.resources.requests.memory | string | `"256Mi"` |  |
-| argocd.server.resources.limits.cpu | string | `"500m"` |  |
-| argocd.server.resources.limits.memory | string | `"256Mi"` |  |
-| argocd.server.resources.requests.cpu | string | `"125m"` |  |
-| argocd.server.resources.requests.memory | string | `"128Mi"` |  |
-| argocd.server.route.enabled | bool | `true` |  |
+| controller.resources.limits.cpu | string | `"2000m"` |  |
+| controller.resources.limits.memory | string | `"2048Mi"` |  |
+| controller.resources.requests.cpu | string | `"250m"` |  |
+| controller.resources.requests.memory | string | `"1024Mi"` |  |
 | fullnameOverride | string | `""` |  |
+| grafana.enabled | bool | `false` |  |
+| grafana.ingress.enabled | bool | `false` |  |
+| grafana.route.enabled | bool | `false` |  |
+| ha.enabled | bool | `false` |  |
+| ha.resources.limits.cpu | string | `"500m"` |  |
+| ha.resources.limits.memory | string | `"256Mi"` |  |
+| ha.resources.requests.cpu | string | `"250m"` |  |
+| ha.resources.requests.memory | string | `"128Mi"` |  |
 | nameOverride | string | `""` |  |
+| notifications.enabled | bool | `false` |  |
 | projects[0].name | string | `"default"` |  |
+| prometheus.enabled | bool | `false` |  |
+| prometheus.ingress.enabled | bool | `false` |  |
+| prometheus.route.enabled | bool | `false` |  |
+| rbac.policy | string | `"g, system:cluster-admins, role:admin"` |  |
+| rbac.scopes | string | `"[groups]"` |  |
+| redis.resources.limits.cpu | string | `"500m"` |  |
+| redis.resources.limits.memory | string | `"256Mi"` |  |
+| redis.resources.requests.cpu | string | `"250m"` |  |
+| redis.resources.requests.memory | string | `"128Mi"` |  |
+| repo.resources.limits.cpu | string | `"1"` |  |
+| repo.resources.limits.memory | string | `"1Gi"` |  |
+| repo.resources.requests.cpu | string | `"250m"` |  |
+| repo.resources.requests.memory | string | `"256Mi"` |  |
 | repos | array/object | `[]` |  |
+| server.autoscale.enabled | bool | `false` |  |
+| server.grcp.ingress.enabled | bool | `false` |  |
+| server.ingress.enabled | bool | `false` |  |
+| server.resources.limits.cpu | string | `"500m"` |  |
+| server.resources.limits.memory | string | `"256Mi"` |  |
+| server.resources.requests.cpu | string | `"125m"` |  |
+| server.resources.requests.memory | string | `"128Mi"` |  |
+| server.route.enabled | bool | `true` |  |
+| server.service.type | string | `""` |  |
+| sso.dex.openShiftOAuth | bool | `true` |  |
+| sso.dex.resources.limits.cpu | string | `"500m"` |  |
+| sso.dex.resources.limits.memory | string | `"256Mi"` |  |
+| sso.dex.resources.requests.cpu | string | `"250m"` |  |
+| sso.dex.resources.requests.memory | string | `"128Mi"` |  |
+| sso.provider | string | `"dex"` |  |
 
 ----------------------------------------------
 Autogenerated from chart metadata using [helm-docs v1.11.0](https://github.com/norwoodj/helm-docs/releases/v1.11.0)
