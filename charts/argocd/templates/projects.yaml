@@ -12,8 +12,6 @@ spec:
   {{- end }}
   {{- if $project.destinations }}
   destinations:
-    {{- range $destination := $project.destinations }}
-    {{- toYaml $destination | nindent 4 }}
-    {{- end }}
+    {{- toYaml $project.destinations | nindent 4 }}
   {{- end }}
 {{- end }}
