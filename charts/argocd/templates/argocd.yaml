@@ -60,7 +60,7 @@ spec:
     {{- end }}
   repo:
     {{- with .Values.repo }}
-    resouces:
+    resources:
       {{- toYaml .resources | nindent 6 }}
     {{- end }}
   resourceExclusions: |
