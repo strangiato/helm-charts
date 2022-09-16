@@ -20,7 +20,7 @@ projects:
 server:
   autoscale:
     enabled: false
-  grcp:
+  grpc:
     ingress:
       enabled: false
   ingress:

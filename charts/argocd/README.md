@@ -73,7 +73,7 @@ Kubernetes: `>= 1.19.0`
 | repo.resources.requests.memory | string | `"256Mi"` |  |
 | repos | array/object | `[]` |  |
 | server.autoscale.enabled | bool | `false` |  |
-| server.grcp.ingress.enabled | bool | `false` |  |
+| server.grpc.ingress.enabled | bool | `false` |  |
 | server.ingress.enabled | bool | `false` |  |
 | server.resources.limits.cpu | string | `"500m"` |  |
 | server.resources.limits.memory | string | `"256Mi"` |  |
