@@ -6,10 +6,8 @@ metadata:
   name: {{ $project.name }}
   labels:
     {{- include "argocd.labels" $ | nindent 4 }}
-spec:
-  {{- if $project.description }}
+spec: # doesn't render correctly when neither object below is set
   description: {{ $project.description }}
-  {{- end }}
   {{- if $project.destinations }}
   destinations:
     {{- toYaml $project.destinations | nindent 4 }}
