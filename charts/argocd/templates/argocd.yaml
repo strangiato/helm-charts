@@ -46,7 +46,7 @@ spec:
     provider: {{ .provider }}
     {{- if eq .provider "dex" }}
     dex:
-      openShiftOAuth: {{ .dex.openshiftOAuth }}
+      openShiftOAuth: {{ .dex.openShiftOAuth }}
       resources:
         {{- toYaml .dex.resources | nindent 8 }}
     {{- end }}
