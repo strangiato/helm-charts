@@ -86,8 +86,6 @@ spec:
     {{- end }}
   controller:
     {{- with .Values.controller }}
-    processor: {}
-    sharding: {}
     resources:
       {{- toYaml .resources | nindent 6 }}
     {{- end }}
