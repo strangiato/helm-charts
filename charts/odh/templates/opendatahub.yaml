@@ -88,7 +88,7 @@ spec:
     {{- if .Values.additionalNotebooks.enabled }}
     - kustomizeConfig:
         overlays:
-          {{- toYaml .Values.additionalNotebooks | nindent 10 }}
+          {{- toYaml .Values.additionalNotebooks.overlays | nindent 10 }}
         repoRef:
           name: manifests
           path: jupyterhub/notebook-images
