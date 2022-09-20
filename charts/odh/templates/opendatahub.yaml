@@ -61,13 +61,6 @@ spec:
           path: grafana/grafana
       name: grafana-instance
     {{- end }}
-    {{- if .Values.spark.enabled }}
-    - kustomizeConfig:
-        repoRef:
-          name: manifests
-          path: radanalyticsio/spark/cluster
-      name: radanalyticsio-spark-cluster
-    {{- end }}
     {{- if .Values.prometheus.instance.enabled }}
     - kustomizeConfig:
         repoRef:

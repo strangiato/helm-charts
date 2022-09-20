@@ -35,10 +35,6 @@ prometheus:
   instance:
     enabled: false
 
-spark: 
-  # -- Enable install of the Spark Operator
-  enabled: false
-
 notebookController:
   enabled: false
 
