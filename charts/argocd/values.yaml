@@ -13,9 +13,13 @@ projects:
   - name: default
     description: ""
     destinations: []
-    #   - server: https://kubernetes.default.svc
-    #     name: in-cluster
-    #     namespace: target-namespace
+      # - namespace: '*'
+      #   server: '*'
+    clusterResourceWhitelist: []
+      # - group: '*'
+      #   kind: '*'
+    sourceRepos: []
+      # - '*'
 
 server:
   autoscale:
