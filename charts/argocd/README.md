@@ -2,7 +2,7 @@
 
 A Helm chart for Kubernetes
 
-![Version: 0.3.4](https://img.shields.io/badge/Version-0.3.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.6](https://img.shields.io/badge/AppVersion-1.6-informational?style=flat-square)
+![Version: 0.3.5](https://img.shields.io/badge/Version-0.3.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.6](https://img.shields.io/badge/AppVersion-1.6-informational?style=flat-square)
 
 ## Installing the Chart
 
@@ -28,7 +28,7 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: "argocd"
-    version: "0.3.4"
+    version: "0.3.5"
     repository: "https://strangiato.github.io/helm-charts/"
 ```
 
@@ -55,9 +55,11 @@ Kubernetes: `>= 1.19.0`
 | ha.resources.requests.memory | string | `"128Mi"` |  |
 | nameOverride | string | `""` |  |
 | notifications.enabled | bool | `false` |  |
+| projects[0].clusterResourceWhitelist | list | `[]` |  |
 | projects[0].description | string | `""` |  |
 | projects[0].destinations | list | `[]` |  |
 | projects[0].name | string | `"default"` |  |
+| projects[0].sourceRepos | list | `[]` |  |
 | prometheus.enabled | bool | `false` |  |
 | prometheus.ingress.enabled | bool | `false` |  |
 | prometheus.route.enabled | bool | `false` |  |
