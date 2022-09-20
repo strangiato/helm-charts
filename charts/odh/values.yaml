@@ -39,13 +39,20 @@ spark:
   # -- Enable install of the Spark Operator
   enabled: false
 
+notebookController:
+  enabled: false
+
+additionalNotebooks:
+  # -- Enable the install of additional Jupyter Notebook images via overlays
+  enabled: true
+  # -- Notebook overlays to include in the deployment
+  overlays:
+    - additional
+    # - cuda-11.0.3
+
 jupyterHub: 
   # -- Enable the install of a JupyterHub instance
   enabled: true
-  # -- Enable the install of additional Jupyter Notebook images via overlays
-  additionalNotebooks:
-    - additional
-    # - cuda-11.0.3
   singleUserProfile: 
     # -- Enable the configuration of a singleUserProfile for JupyterHub
     enabled: false

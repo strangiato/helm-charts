@@ -91,6 +91,7 @@ spec:
           name: manifests
           path: jupyterhub/jupyterhub
       name: jupyterhub
+    {{- end }}
     {{- if .Values.jupyterHub.additionalNotebooks }}
     - kustomizeConfig:
         overlays:
@@ -100,6 +101,12 @@ spec:
           path: jupyterhub/notebook-images
       name: notebook-images
     {{- end }}
+    {{- if .Values.notebookController }}
+    - kustomizeConfig:
+      repoRef:
+        name: manifests
+        path: odh-notebook-controller
+      name: odh-notebook-controller
     {{- end }}
     {{- if .Values.airflow.instance.enabled }}
     - kustomizeConfig:
