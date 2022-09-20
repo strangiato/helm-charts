@@ -2,7 +2,7 @@
 
 A Helm chart for configuring OpenDataHub on OpenShift
 
-![Version: 0.3.1](https://img.shields.io/badge/Version-0.3.1-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.2](https://img.shields.io/badge/AppVersion-v1.2-informational?style=flat-square)
+![Version: 0.4.0](https://img.shields.io/badge/Version-0.4.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.3](https://img.shields.io/badge/AppVersion-v1.3-informational?style=flat-square)
 
 ## Installing the Chart
 
@@ -28,7 +28,7 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: "odh"
-    version: "0.3.1"
+    version: "0.4.0"
     repository: "https://strangiato.github.io/helm-charts/"
 ```
 
@@ -40,18 +40,20 @@ Kubernetes: `>= 1.19.0`
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| additionalNotebooks.enabled | bool | `true` | Enable the install of additional Jupyter Notebook images via overlays |
+| additionalNotebooks.overlays | list | `["additional"]` | Notebook overlays to include in the deployment |
 | airflow.instance.enabled | bool | `false` | Enable install of the Airflow instance |
 | airflow.operator.enabled | bool | `false` | Enable install of the Airflow Operator |
 | argoWorkflows.instance.enabled | bool | `false` | Enable install of the Argo Workflows instance |
 | argoWorkflows.operator.enabled | bool | `false` | Enable install of the Argo Workflows Operator |
 | grafana.instance.enabled | bool | `false` | Enable install of a Grafana instance |
 | grafana.operator.enabled | bool | `false` | Enable install of the Grafana Operator |
-| jupyterHub.additionalNotebooks | list | `["additional"]` | Enable the install of additional Jupyter Notebook images via overlays |
 | jupyterHub.enabled | bool | `true` | Enable the install of a JupyterHub instance |
 | jupyterHub.singleUserProfile.enabled | bool | `false` | Enable the configuration of a singleUserProfile for JupyterHub |
 | kafka.instance.enabled | bool | `false` | Enable install of a Kafka instance |
 | kafka.operator.enabled | bool | `false` | Enable install of the Strimzi Kafka Operator |
 | modelMesh.enabled | bool | `false` | Enable install of the Model Mesh instnace |
+| notebookController.enabled | bool | `false` |  |
 | odhCommon.enabled | bool | `true` | Enable install of ODH Common resources |
 | odhDashboard.enabled | bool | `true` | Enable install of the ODH Dashboard instance |
 | prometheus.instance.enabled | bool | `false` |  |
@@ -60,7 +62,6 @@ Kubernetes: `>= 1.19.0`
 | repos.manifestsUrl | string | `"https://github.com/opendatahub-io/odh-manifests/tarball/"` | ODH Manifests URL base |
 | repos.manifestsVersion | string | Chart appVersion | Used to overwrite teh manifestsURL version from the chart appVersion |
 | seldon.operator.enabled | bool | `false` | Enable install of Seldon Operator |
-| spark.enabled | bool | `false` | Enable install of the Spark Operator |
 | superset.enabled | bool | `false` | Enable install of Apache Superset instance |
 
 ----------------------------------------------
