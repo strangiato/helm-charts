@@ -96,9 +96,9 @@ spec:
     {{- end }}
     {{- if .Values.notebookController.enabled }}
     - kustomizeConfig:
-      repoRef:
-        name: manifests
-        path: odh-notebook-controller
+        repoRef:
+          name: manifests
+          path: odh-notebook-controller
       name: odh-notebook-controller
     {{- end }}
     {{- if .Values.airflow.instance.enabled }}
