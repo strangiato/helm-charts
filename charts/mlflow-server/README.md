@@ -55,6 +55,7 @@ Kubernetes: `>= 1.21.0`
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
 | crunchyPostgres.enabled | bool | `true` | Enable creation of a postgres instance using crunchyPostgres operator |
+| database.migration.enabled | bool | `false` |  |
 | fullnameOverride | string | `""` | String to fully override fullname template |
 | image.pullPolicy | string | `"IfNotPresent"` | The docker image pull policy |
 | image.repository | string | `"quay.io/troyer/mlflow-server"` | The image repository to use |
