@@ -32,6 +32,10 @@ serviceAccount:
   # @default -- fullname template
   name: ""
 
+database:
+  migration:
+    enabled: false
+
 # -- Map of annotations to add to the pods
 podAnnotations: {}
 

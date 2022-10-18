@@ -1,3 +1,4 @@
+{{- if .Values.database.migration.enabled }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -50,3 +51,4 @@ spec:
                   key: user
             {{- end }}
       restartPolicy: Never
+{{- end }}
