@@ -55,7 +55,7 @@ spec:
     {{- with .Values.applicationSet }}
     resources:
         {{- toYaml .resources | nindent 8 }}
-
+    {{- end }}
   rbac:
     {{- with .Values.rbac }}
     defaultPolicy: ''
