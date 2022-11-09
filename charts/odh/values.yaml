@@ -72,8 +72,6 @@ jupyterHub:
     #         cpu: 1
 
 repos:
-  # -- KubeFlow manifest URL
-  kfManifestsUrl: 'https://github.com/opendatahub-io/manifests/tarball/v1.5-branch-openshift'
   # -- ODH Manifests URL base
   manifestsUrl: 'https://github.com/opendatahub-io/odh-manifests/tarball/'
   # Overrides the manifestsVersion whose default is the chart appVersion.
