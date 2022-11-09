@@ -2,7 +2,7 @@
 
 A Helm chart for Kubernetes
 
-![Version: 0.3.5](https://img.shields.io/badge/Version-0.3.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.6](https://img.shields.io/badge/AppVersion-1.6-informational?style=flat-square)
+![Version: 0.3.6](https://img.shields.io/badge/Version-0.3.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 1.6](https://img.shields.io/badge/AppVersion-1.6-informational?style=flat-square)
 
 ## Installing the Chart
 
@@ -28,7 +28,7 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: "argocd"
-    version: "0.3.5"
+    version: "0.3.6"
     repository: "https://strangiato.github.io/helm-charts/"
 ```
 
@@ -40,6 +40,10 @@ Kubernetes: `>= 1.19.0`
 
 | Key | Type | Default | Description |
 |-----|------|---------|-------------|
+| applicationSet.resources.limits.cpu | string | `"2"` |  |
+| applicationSet.resources.limits.memory | string | `"1Gi"` |  |
+| applicationSet.resources.requests.cpu | string | `"250m"` |  |
+| applicationSet.resources.requests.memory | string | `"512Mi"` |  |
 | controller.resources.limits.cpu | string | `"2000m"` |  |
 | controller.resources.limits.memory | string | `"2048Mi"` |  |
 | controller.resources.requests.cpu | string | `"250m"` |  |
