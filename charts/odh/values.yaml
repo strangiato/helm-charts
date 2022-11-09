@@ -27,7 +27,7 @@ modelMesh:
 
 dataSciencePipelines:
   # -- Enable install of the Data Science Pipelines (KubeFlow Pipelines) component
-  enable: true
+  enabled: true
   overlays:
     - metadata-store-mariadb
     - ds-pipeline-ui
