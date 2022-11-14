@@ -1,6 +1,8 @@
 # helm-charts
 
-A repository of custom helm charts.
+This is a personal repository for managing and building helm charts.  These charts are often experimental.  For additional charts, please also refer to the [Red Hat Intelligent Application Practice Helm Charts](https://github.com/rh-intelligent-application-practice/helm-charts) repo.
+
+## Usage
 
 To access charts from this from the cli repository add it:
 
