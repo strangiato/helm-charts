@@ -2,7 +2,9 @@
 
 A Helm chart for configuring OpenDataHub on OpenShift
 
-![Version: 0.4.3](https://img.shields.io/badge/Version-0.4.3-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.3](https://img.shields.io/badge/AppVersion-v1.3-informational?style=flat-square)
+This chart has been depreciated and moved to the [Red Hat Intelligent Application Practice Helm Charts](https://github.com/rh-intelligent-application-practice/helm-charts/tree/main/charts/odh) repo.
+
+![Version: 0.4.4](https://img.shields.io/badge/Version-0.4.4-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: v1.3](https://img.shields.io/badge/AppVersion-v1.3-informational?style=flat-square)
 
 ## Installing the Chart
 
@@ -28,7 +30,7 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: "odh"
-    version: "0.4.3"
+    version: "0.4.4"
     repository: "https://strangiato.github.io/helm-charts/"
 ```
 
