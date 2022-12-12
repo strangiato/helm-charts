@@ -4,6 +4,10 @@ A Helm chart for deploying mlflow on OpenShift
 
 ![Version: 0.5.6](https://img.shields.io/badge/Version-0.5.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.0](https://img.shields.io/badge/AppVersion-2.0-informational?style=flat-square)
 
+## Pre-Reqs
+
+This chart utilizes components from the Crunch Postgres Operator and OpenShift Data Foundations in the default configuration.  The chart expects both operators to be installed on the cluster prior to deploying.
+
 ## Installing the Chart
 
 To access charts from this from the cli repository add it:
@@ -107,15 +111,15 @@ Kubernetes: `>= 1.21.0`
 
 When accessing MLFlow from outside of the cluster with OAuth enabled, the route is secured by an OpenShift OAuth Proxy.  This OAuth proxy by default will only allow users to access MLFlow using the UI. 
 
-If you wish to run training processes from outside of the cluster that write to MLFlow you must set `enableBearerTokenAccess: true`.  This option requires additional permissions to be granted to the MLFlow Service Account which requires cluster admin privledges.
+If you wish to run training processes from outside of the cluster that write to MLFlow you must set `enableBearerTokenAccess: true`.  This option requires additional permissions to be granted to the MLFlow Service Account which requires cluster admin privileges.
 
-Once this option is enabled you can set the following environment variable in your training enviornment and MLFlow will automatically pass your Bearer Token to the OpenShift OAuth Proxy and authenticate any API calls MLFlow makes to the server.
+Once this option is enabled you can set the following environment variable in your training environment and MLFlow will automatically pass your Bearer Token to the OpenShift OAuth Proxy and authenticate any API calls MLFlow makes to the server.
 
 ```
 MLFLOW_TRACKING_TOKEN
 ```
 
-To retreive your token from openshift run the following command:
+To retrieve your token from openshift run the following command:
 
 ```sh
 oc whoami --show-token
