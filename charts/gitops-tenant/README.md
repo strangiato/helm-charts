@@ -11,7 +11,7 @@ To access charts from this from the cli repository add it:
 ```sh
 helm repo add strangiato https://strangiato.github.io/helm-charts/
 helm repo update strangiato
-helm install [release-name] strangiato/gitops-tenant
+helm upgrade -i [release-name] strangiato/gitops-tenant
 ```
 
 To include a chart from this repository in an umbrella chart, include it in your dependencies in your `Chart.yaml` file.
