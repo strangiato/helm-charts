@@ -9,6 +9,12 @@ metadata:
 spec:
   containers:
     - name: wget
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+        capabilities:
+          drop:
+            - ALL
       image: busybox
       command: ['wget']
       args: ['{{ include "mlflow-server.fullname" . }}:{{ .Values.service.port }}']

@@ -9,6 +9,12 @@ metadata:
 spec:
   containers:
     - name: training
+      securityContext:
+        allowPrivilegeEscalation: false
+        runAsNonRoot: true
+        capabilities:
+          drop:
+            - ALL
       image: "{{ .Values.trainingTestImage.repository }}:{{ .Values.trainingTestImage.tag | default .Chart.AppVersion }}"
       imagePullPolicy: "{{ .Values.trainingTestImage.pullPolicy}}"
       env:
