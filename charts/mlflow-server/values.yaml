@@ -19,6 +19,12 @@ image:
   # @default -- Chart appVersion
   tag: ""
 
+odhApplication:
+  # -- Enable the ODH Dashboard Application tile for MLFlow
+  enabled: false
+  # -- Used to specify the namespace ODH is installed in if installed in a different namespace from MLFlow
+  namespaceOverride: ""
+
 serviceAccount:
   # Specifies whether a service account should be created
   # -- Enable creation of ServiceAccount for MLFlow Server pod
