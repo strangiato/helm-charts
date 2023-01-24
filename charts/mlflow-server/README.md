@@ -2,7 +2,7 @@
 
 A Helm chart for deploying mlflow on OpenShift
 
-![Version: 0.5.6](https://img.shields.io/badge/Version-0.5.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.0](https://img.shields.io/badge/AppVersion-2.0-informational?style=flat-square)
+![Version: 0.5.7](https://img.shields.io/badge/Version-0.5.7-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.0](https://img.shields.io/badge/AppVersion-2.0-informational?style=flat-square)
 
 ## Pre-Reqs
 
@@ -32,7 +32,7 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: "mlflow-server"
-    version: "0.5.6"
+    version: "0.5.7"
     repository: "https://strangiato.github.io/helm-charts/"
 ```
 
@@ -80,6 +80,8 @@ Kubernetes: `>= 1.21.0`
 | objectStorage.s3AccessKeyId | string | `""` | S3 Access Key ID if the objectBucketClaim is disabled |
 | objectStorage.s3EndpointUrl | string | `""` | URL for s3 endpoint if the objectBucketClaim is disabled |
 | objectStorage.s3SecretAccessKey | string | `""` | S3 Secret Access Key if the objectBucketClaim is disabled |
+| odhApplication.enabled | bool | `false` | Enable the ODH Dashboard Application tile for MLFlow |
+| odhApplication.namespaceOverride | string | `""` | Used to specify the namespace ODH is installed in if installed in a different namespace from MLFlow |
 | openshiftOauth.enableBearerTokenAccess | bool | `false` | Enable access to MLFlow using an OpenShift Bearer Token.  This feature enables users from outside of the cluster to read/write to MLFlow using the API.   Warning: This feature requires cluster admin to install. |
 | openshiftOauth.enabled | bool | `true` | Secures MLFlow with OpenShift Oauth Proxy.  If disabling this option it is recommended to set `route.tls.termination: edge`. |
 | openshiftOauth.resources | object | `{}` |  |
