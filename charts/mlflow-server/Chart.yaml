@@ -8,8 +8,8 @@ sources:
   - https://github.com/strangiato/helm-charts/tree/main/charts/mlflow-server
   - https://github.com/strangiato/mlflow-server
 
-version: 0.5.7
-appVersion: "2.0"
+version: 0.5.8
+appVersion: "2.3"
 
 icon: https://avatars.githubusercontent.com/u/39938107
 
