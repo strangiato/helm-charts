@@ -67,7 +67,8 @@ objectStorage:
     bucketclass: noobaa-default-bucket-class
     # -- Additional custom annotations for the objectBucketClaim
     annotations: {}
-  # -- URL for s3 endpoint if the objectBucketClaim is disabled
+  # -- URL for s3 endpoint if the objectBucketClaim is disabled.  Refer to 
+  # https://docs.aws.amazon.com/general/latest/gr/s3.html for AWS regional endpoints.
   s3EndpointUrl: ""
   # -- Name of the s3 bucket if the objectBucketClaim is disabled
   mlflowBucketName: "mlflow"

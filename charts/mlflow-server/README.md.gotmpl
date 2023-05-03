@@ -50,7 +50,8 @@ When accessing MLFlow from outside of the cluster with OAuth enabled, the route 
 If you wish to run training processes from outside of the cluster that write to MLFlow you must set `enableBearerTokenAccess: true`.  This option requires additional permissions to be granted to the MLFlow Service Account which requires cluster admin privileges.  To install mlflow-server with this feature, run the following command:
 
 ```sh
-helm upgrade -i [release-name] strangiato/{{ template "chart.name" . }} --set openshiftOauth.enableBearerTokenAccess=true
+helm upgrade -i [release-name] strangiato/{{ template "chart.name" . }} \
+  --set openshiftOauth.enableBearerTokenAccess=true
 ```
 
 Once this option is enabled you can set the following environment variable in your training environment and MLFlow will automatically pass your Bearer Token to the OpenShift OAuth Proxy and authenticate any API calls MLFlow makes to the server.
@@ -64,5 +65,22 @@ To retrieve your token from openshift run the following command:
 ```sh
 oc whoami --show-token
 ```
+
+### Utilizing MLFlow with AWS S3 Buckets
+
+By default, MLFlow Server is configured to utilize Noobaa ObjectBucketClaims from OpenShift Data Foundations for object storage.  If you wish to use native AWS S3 buckets, you must first create a bucket and generate credentials that have read/write access to that bucket.  By default mlflow-server looks for a bucket called `mlflow` but your bucket can be named anything you would like.
+
+Once the bucket is created, you can install mlflow-server with the following options:
+
+```sh
+helm upgrade -i [release-name] strangiato/{{ template "chart.name" . }} \
+  --set objectStorage.objectBucketClaim.enabled=false \
+  --set objectStorage.mlflowBucketName=mlflow \
+  --set objectStorage.s3AccessKeyId=<access-key-id> \
+  --set objectStorage.s3SecretAccessKey=<secret-key> \
+  --set objectStorage.s3EndpointUrl=<region-endpoint>
+```
+
+The s3EndpointUrl should match the endpoint URL for the region in which you created your S3 bucket.  For reference, you can find a list of endpoints for each region [here](https://docs.aws.amazon.com/general/latest/gr/s3.html).
 
 {{ template "helm-docs.versionFooter" . }}
