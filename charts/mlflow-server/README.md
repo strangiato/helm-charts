@@ -2,7 +2,7 @@
 
 A Helm chart for deploying mlflow on OpenShift
 
-![Version: 0.5.8](https://img.shields.io/badge/Version-0.5.8-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.3](https://img.shields.io/badge/AppVersion-2.3-informational?style=flat-square)
+![Version: 0.6.0](https://img.shields.io/badge/Version-0.6.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.5](https://img.shields.io/badge/AppVersion-2.5-informational?style=flat-square)
 
 ## Pre-Reqs
 
@@ -32,7 +32,7 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: "mlflow-server"
-    version: "0.5.8"
+    version: "0.6.0"
     repository: "https://strangiato.github.io/helm-charts/"
 ```
 
@@ -84,6 +84,9 @@ Kubernetes: `>= 1.21.0`
 | odhApplication.namespaceOverride | string | `""` | Used to specify the namespace ODH is installed in if installed in a different namespace from MLFlow |
 | openshiftOauth.enableBearerTokenAccess | bool | `false` | Enable access to MLFlow using an OpenShift Bearer Token.  This feature enables users from outside of the cluster to read/write to MLFlow using the API.   Warning: This feature requires cluster admin to install. |
 | openshiftOauth.enabled | bool | `true` | Secures MLFlow with OpenShift Oauth Proxy.  If disabling this option it is recommended to set `route.tls.termination: edge`. |
+| openshiftOauth.image.pullPolicy | string | `"IfNotPresent"` | The docker image pull policy |
+| openshiftOauth.image.repository | string | `"registry.redhat.io/openshift4/ose-oauth-proxy"` | The image repository to use |
+| openshiftOauth.image.tag | string | Chart appVersion | The image tag to use |
 | openshiftOauth.resources | object | `{}` |  |
 | podAnnotations | object | `{}` | Map of annotations to add to the pods |
 | podSecurityContext | object | `{}` |  |
