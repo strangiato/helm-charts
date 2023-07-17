@@ -105,6 +105,15 @@ openshiftOauth:
   # -- Enable access to MLFlow using an OpenShift Bearer Token.  This feature enables users from outside of the cluster to read/write to MLFlow using the API.  
   # Warning: This feature requires cluster admin to install.
   enableBearerTokenAccess: false
+  image:
+    # -- The image repository to use
+    repository: registry.redhat.io/openshift4/ose-oauth-proxy
+    # -- The docker image pull policy
+    pullPolicy: IfNotPresent
+    # Overrides the image tag whose default is the chart appVersion.
+    # -- The image tag to use
+    # @default -- Chart appVersion
+    tag: v4.12
   resources: {}
     # We usually recommend not to specify default resources and to leave this as a conscious
     # choice for the user. This also increases chances charts run on environments with little

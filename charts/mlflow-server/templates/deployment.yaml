@@ -121,8 +121,8 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
         {{- if .Values.openshiftOauth.enabled }}
         - name: oauth-proxy
-          image: registry.redhat.io/openshift4/ose-oauth-proxy:v4.10
-          imagePullPolicy: IfNotPresent
+          image: "{{ .Values.openshiftOauth.image.repository }}:{{ .Values.openshiftOauth.image.tag }}"
+          imagePullPolicy: {{ .Values.openshiftOauth.image.imagePullPolicy }}
           ports:
             - containerPort: 8443
               name: oauth-proxy
