@@ -130,7 +130,7 @@ spec:
             - --https-address=:8443
             - --provider=openshift
             {{- if .Values.openshiftOauth.enableBearerTokenAccess }}
-            - '--openshift-delegate-urls={"/": {"resource": "service", "verb": "get", "name": "{{ include "mlflow-server.fullname" . }}"}}'
+            - '--openshift-delegate-urls={"/": {"namespace":"{{ .Release.Namespace }}", "resource": "service", "verb": "get", "name": "{{ include "mlflow-server.fullname" . }}"}}'
             {{- else }}
             - --openshift-sar={"namespace":"{{ .Release.Namespace }}","resource":"services","resourceName":"{{ include "mlflow-server.fullname" . }}","verb":"get"}
             {{- end }}
