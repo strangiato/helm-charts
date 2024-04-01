@@ -84,8 +84,10 @@ spec:
                   name: {{ include "mlflow-server.fullname" . }}
                   key: S3_ENDPOINT_URL
             {{ end }}
+            {{ if .Values.objectStorage.caBundle }}
             - name: AWS_CA_BUNDLE
-              value: /run/secrets/kubernetes.io/serviceaccount/service-ca.crt
+              value: .Values.objectStorage.caBundle
+            {{ end }}
             {{ if .Values.crunchyPostgres.enabled }}
             - name: PGBOUNCE_HOST
               valueFrom:
