@@ -75,6 +75,8 @@ objectStorage:
   s3AccessKeyId: ""
   # -- S3 Secret Access Key if the objectBucketClaim is disabled
   s3SecretAccessKey: ""
+  # -- The CA bundle for the internal cluster certs.  Set this value to "" for AWS S3.
+  caBundle: /run/secrets/kubernetes.io/serviceaccount/service-ca.crt
 
 crunchyPostgres:
   # -- Enable creation of a postgres instance using crunchyPostgres operator
