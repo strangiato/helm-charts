@@ -86,7 +86,7 @@ spec:
             {{ end }}
             {{ if .Values.objectStorage.caBundle }}
             - name: AWS_CA_BUNDLE
-              value: .Values.objectStorage.caBundle
+              value: {{ .Values.objectStorage.caBundle }}
             {{ end }}
             {{ if .Values.crunchyPostgres.enabled }}
             - name: PGBOUNCE_HOST
