@@ -2,7 +2,7 @@
 
 A Helm chart for deploying mlflow on OpenShift
 
-![Version: 0.6.5](https://img.shields.io/badge/Version-0.6.5-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.10](https://img.shields.io/badge/AppVersion-2.10-informational?style=flat-square)
+![Version: 0.6.6](https://img.shields.io/badge/Version-0.6.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.12](https://img.shields.io/badge/AppVersion-2.12-informational?style=flat-square)
 
 ## Pre-Reqs
 
@@ -32,7 +32,7 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: "mlflow-server"
-    version: "0.6.5"
+    version: "0.6.6"
     repository: "https://strangiato.github.io/helm-charts/"
 ```
 
