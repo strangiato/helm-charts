@@ -81,6 +81,12 @@ objectStorage:
 crunchyPostgres:
   # -- Enable creation of a postgres instance using crunchyPostgres operator
   enabled: true
+  instanceReplicas: 2
+  pgBouncerReplicas: 1
+  databaseInitSQL:
+    name: postgres-init-sql
+    key: init.sql
+  openshift: true
 
 service:
   # -- Kubernetes Service type

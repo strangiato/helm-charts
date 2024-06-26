@@ -1,6 +1,6 @@
 dependencies:
 - name: postgrescluster
   repository: https://strangiato.github.io/helm-charts/
-  version: 0.2.2
-digest: sha256:8d86fac212fdbef7ebf8dd03fb1f095b9f0438d9cb5f9dd123dd279848ba0d4f
-generated: "2022-04-19T13:58:17.056870481-05:00"
+  version: 5.6.0
+digest: sha256:525e9c039c154ac814985bb789e0017f56f2bd53083b74ed6512ca2be2a207b0
+generated: "2024-06-26T09:40:49.580931-06:00"
