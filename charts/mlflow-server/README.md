@@ -2,7 +2,7 @@
 
 A Helm chart for deploying mlflow on OpenShift
 
-![Version: 0.6.6](https://img.shields.io/badge/Version-0.6.6-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.12](https://img.shields.io/badge/AppVersion-2.12-informational?style=flat-square)
+![Version: 0.7.0](https://img.shields.io/badge/Version-0.7.0-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 2.12](https://img.shields.io/badge/AppVersion-2.12-informational?style=flat-square)
 
 ## Pre-Reqs
 
@@ -32,7 +32,7 @@ appVersion: "1.16.0"
 
 dependencies:
   - name: "mlflow-server"
-    version: "0.6.6"
+    version: "0.7.0"
     repository: "https://strangiato.github.io/helm-charts/"
 ```
 
@@ -47,7 +47,7 @@ Kubernetes: `>= 1.21.0`
 
 | Repository | Name | Version |
 |------------|------|---------|
-| https://strangiato.github.io/helm-charts/ | postgrescluster | 0.2.2 |
+| https://strangiato.github.io/helm-charts/ | crunchyPostgres(postgrescluster) | 5.6.0 |
 
 ## Values
 
@@ -58,7 +58,12 @@ Kubernetes: `>= 1.21.0`
 | autoscaling.maxReplicas | int | `100` |  |
 | autoscaling.minReplicas | int | `1` |  |
 | autoscaling.targetCPUUtilizationPercentage | int | `80` |  |
+| crunchyPostgres.databaseInitSQL.key | string | `"init.sql"` |  |
+| crunchyPostgres.databaseInitSQL.name | string | `"postgres-init-sql"` |  |
 | crunchyPostgres.enabled | bool | `true` | Enable creation of a postgres instance using crunchyPostgres operator |
+| crunchyPostgres.instanceReplicas | int | `2` |  |
+| crunchyPostgres.openshift | bool | `true` |  |
+| crunchyPostgres.pgBouncerReplicas | int | `1` |  |
 | database.migration.enabled | bool | `false` |  |
 | fullnameOverride | string | `""` | String to fully override fullname template |
 | image.pullPolicy | string | `"IfNotPresent"` | The docker image pull policy |
