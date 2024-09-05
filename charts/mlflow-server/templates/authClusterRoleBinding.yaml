@@ -2,7 +2,7 @@
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: {{ include "mlflow-server.fullname" . }}-auth-delegator
+  name: {{ include "mlflow-server.fullname" . }}-{{ .Release.Namespace }}-auth-delegator
   labels:
     {{- include "mlflow-server.labels" . | nindent 4 }}
 subjects:
